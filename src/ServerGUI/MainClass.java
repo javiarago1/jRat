@@ -16,6 +16,9 @@ import javax.swing.*;
 public class MainClass {
 
 
+    private static void getSysInfo(){
+
+    }
 
     private static void ping(Server server){
         ConcurrentHashMap <Socket, Streams> map = server.getMap();

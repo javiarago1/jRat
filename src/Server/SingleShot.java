@@ -1,5 +1,6 @@
  package Server;
 
+ import InformationGathering.SystemNetworkInformation;
  import ServerGUI.MainClass;
  import com.sun.tools.javac.Main;
 
@@ -30,7 +31,12 @@
                  System.out.println("Connected to: " + socket.getRemoteSocketAddress());
                  SwingUtilities.invokeLater(() -> {
                      DefaultTableModel model = (DefaultTableModel) MainClass.gui.j.getModel();
+                     dialog.get(socket).sendMsg("INITIAL_DETAILS");
+                     SystemNetworkInformation a = (SystemNetworkInformation) dialog.get(socket).readObject();
+                     System.out.println(a);
                      model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
+
+
                  });
              }
              executor.submit(new SingleShot(server, executor, dialog));

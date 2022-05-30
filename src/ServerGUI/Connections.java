@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import Client.Tree;
 import Server.Streams;
 
 import javax.swing.*;
@@ -37,8 +38,9 @@ public class Connections {
                         System.out.println("Device's OS is: " + selectedStreams.readMsg());
                         break;
                     case "d": selectedStreams.sendMsg("TREE");
-                        JTree tempTree = selectedStreams.readObject();
-                        SwingUtilities.invokeLater(() -> new TreeGUI(tempTree));
+                        JTree tempTree = (JTree) selectedStreams.readObject();
+                        System.out.println("Object -> "+tempTree);
+                        new TreeGUI(tempTree);
                         break;
                     case "e":	return;
                     default: 	break;

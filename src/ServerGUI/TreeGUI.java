@@ -29,16 +29,6 @@ public class TreeGUI {
 
     private void loadStyle(){
         FlatDarculaLaf.setup();
-        UIManager.put( "Tree.background", Color.RED );
-        DefaultTreeCellRenderer renderer = (DefaultTreeCellRenderer) JT.getCellRenderer();
-        Icon closedIcon = new ImageIcon("src/ServerGUI/TreeIMG/folder.png");
-        Icon openIcon = new ImageIcon("src/ServerGUI/TreeIMG/folder.png");
-        Icon leafIcon = new ImageIcon("src/ServerGUI/TreeIMG/file.png");
-        renderer.setClosedIcon(closedIcon);
-        renderer.setOpenIcon(openIcon);
-        renderer.setLeafIcon(leafIcon);
-
-
     }
 
     private void addFrame() {

