@@ -50,7 +50,7 @@ public class Client {
         } catch (ConnectException e) {
             System.out.println("Connection refused");
         } catch (SocketException ignored) {
-            System.out.println("Connection rested");
+            System.out.println("Connection reset");
         } catch (IOException e) {
             e.printStackTrace();
         }
