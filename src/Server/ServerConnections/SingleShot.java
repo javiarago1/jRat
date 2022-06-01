@@ -35,7 +35,8 @@
                  Object[] informationArray = (Object[]) dialog.get(socket).readObject();
                  SystemNetworkInformation tempNetwork = (SystemNetworkInformation) informationArray[0];
                  SystemInformation tempSystem = (SystemInformation) informationArray[1];
-
+                 dialog.get(socket).setTempSystemInformation(tempSystem);
+                 dialog.get(socket).setTempSystemNetworkInformation(tempNetwork);
 
                  String[]row=new String[]{socket.getInetAddress().toString(),tempNetwork.getUSER_COUNTRY(),"User",tempSystem.getUSER_NAME(), tempSystem.getOPERATING_SYSTEM(),"Connected"};
 

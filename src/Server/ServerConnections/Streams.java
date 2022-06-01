@@ -2,6 +2,8 @@ package Server.ServerConnections;
 
 
 
+import Client.InformationGathering.SystemInformation;
+import Client.InformationGathering.SystemNetworkInformation;
 import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.*;
@@ -11,6 +13,9 @@ public class Streams {
     private PrintWriter writer;
     private BufferedReader reader;
     private Socket socket;
+
+    private SystemInformation tempSystemInformation;
+    private SystemNetworkInformation tempSystemNetworkInformation;
 
 
     public Streams(Socket socket) throws IOException {
@@ -51,7 +56,19 @@ public class Streams {
 
     }
 
-    public String getSocket() {
-        return socket.getInetAddress().toString();
+    public SystemInformation getTempSystemInformation() {
+        return tempSystemInformation;
+    }
+
+    public void setTempSystemInformation(SystemInformation tempSystemInformation) {
+        this.tempSystemInformation = tempSystemInformation;
+    }
+
+    public SystemNetworkInformation getTempSystemNetworkInformation() {
+        return tempSystemNetworkInformation;
+    }
+
+    public void setTempSystemNetworkInformation(SystemNetworkInformation tempSystemNetworkInformation) {
+        this.tempSystemNetworkInformation = tempSystemNetworkInformation;
     }
 }

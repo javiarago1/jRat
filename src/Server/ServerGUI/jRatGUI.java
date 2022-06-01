@@ -1,6 +1,7 @@
 package Server.ServerGUI;
 
 import Server.ServerConnections.Server;
+import Server.ServerGUI.TableUtils.BrowserMenuListener;
 import Server.ServerGUI.TableUtils.StateColumnRenderer;
 import Server.ServerGUI.TableUtils.TableModel;
 import Server.ServerGUI.TableUtils.TablePopUpListener;
@@ -70,6 +71,7 @@ public class jRatGUI {
         // JTable
         setupTable();
         //
+
         frame.setVisible(true);
     }
 
@@ -77,7 +79,9 @@ public class jRatGUI {
 
     private void addPopUpMenu(){
         popupMenu = new JPopupMenu();
+
         browserMenu = new JMenu("File Manager");
+
         popupMenu.add(browserMenu);
 
     }
@@ -89,7 +93,10 @@ public class jRatGUI {
         connectionTable.setFocusable(false);
         tableScroll.setBounds(0, 0, 784, 780);
         connectionTable.setComponentPopupMenu(popupMenu);
-        connectionTable.addMouseListener(new TablePopUpListener(connectionTable, browserMenu,server));
+
+        connectionTable.addMouseListener(new TablePopUpListener(connectionTable));
+        browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,server));
+
         panel.add(tableScroll);
         frame.add(panel);
     }

@@ -31,36 +31,32 @@ public class Client {
 
             while (true) {
                 String sel = reader.readLine();
-                switch (sel) {
-                    case "PING", "IP" -> {
-                        writer.println(s.getRemoteSocketAddress());
-                        writer.flush();
+
+                if ("PING".equals(sel) || "IP".equals(sel)) {
+                    writer.println(s.getRemoteSocketAddress());
+                    writer.flush();
+                } else if ("CLOSE".equals(sel)) {
+                    s.close();
+                    return;
+                } else if ("PC_NAME".equals(sel)) {
+                    InetAddress addr = InetAddress.getLocalHost();
+                    writer.println(addr.getHostName());
+                    writer.flush();
+                } else if ("OS".equals(sel)) {
+                    writer.println(System.getProperty("os.name"));
+                    writer.flush();
+                } else if (sel.startsWith("TREE")) {
+                    new Thread(new Tree(new File(sel.substring(4)), s)).start();
+                } else if ("SYS_DETAILS".equals(sel)) {
+                    output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
+                } else if ("DISKS".equals(sel)) {
+                    File[] files = File.listRoots();
+                    String[] rutas = new String[files.length];
+                    for (int i = 0; i < files.length; i++) {
+                        rutas[i] = files[i].toString();
                     }
-                    case "CLOSE" -> {
-                        s.close();
-                        return;
-                    }
-                    case "PC_NAME" -> {
-                        InetAddress addr = InetAddress.getLocalHost();
-                        writer.println(addr.getHostName());
-                        writer.flush();
-                    }
-                    case "OS" -> {
-                        writer.println(System.getProperty("os.name"));
-                        writer.flush();
-                    }
-                    case "TREE" -> new Thread(new Tree(new File("C:\\Users\\JAVIER\\Documents"), s)).start();
-                    case "SYS_DETAILS"-> output.writeObject(new Object[]{new SystemNetworkInformation(),new SystemInformation()});
-                    case "DISKS" -> {
-                        File []files= File.listRoots();
-                        String[]rutas = new String[files.length];
-                        for (int i=0;i<files.length;i++){
-                            rutas[i]=files[i].toString();
-                        }
-                        new ObjectOutputStream(s.getOutputStream()).writeObject(rutas);
-                    }
-                    default -> {
-                    }
+
+                    new ObjectOutputStream(s.getOutputStream()).writeObject(rutas);
                 }
             }
         } catch (ConnectException e) {
