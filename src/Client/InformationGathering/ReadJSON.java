@@ -1,4 +1,4 @@
-package InformationGathering;
+package Client.InformationGathering;
 
 import org.json.JSONException;
 import org.json.JSONObject;

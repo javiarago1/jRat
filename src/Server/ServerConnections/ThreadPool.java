@@ -1,4 +1,4 @@
-package Server;
+package Server.ServerConnections;
 
 import java.net.ServerSocket;
 import java.net.Socket;

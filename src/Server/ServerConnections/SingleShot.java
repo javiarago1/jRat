@@ -1,8 +1,8 @@
- package Server;
+ package Server.ServerConnections;
 
- import InformationGathering.SystemNetworkInformation;
- import ServerGUI.MainClass;
- import com.sun.tools.javac.Main;
+ import Client.InformationGathering.SystemInformation;
+ import Client.InformationGathering.SystemNetworkInformation;
+ import Server.ServerGUI.MainClass;
 
  import javax.swing.*;
  import javax.swing.table.DefaultTableModel;
@@ -12,9 +12,9 @@
  import java.util.concurrent.ExecutorService;
 
  public class SingleShot implements Runnable {
-     private ServerSocket server;
-     private ExecutorService executor;
-     private ConcurrentHashMap <Socket, Streams> dialog;
+     private final ServerSocket server;
+     private final ExecutorService executor;
+     private final ConcurrentHashMap <Socket, Streams> dialog;
 
      public SingleShot(ServerSocket server, ExecutorService executor, ConcurrentHashMap<Socket, Streams> dialog) {
          if (server == null || executor == null || dialog == null) throw new IllegalArgumentException();
@@ -29,15 +29,22 @@
              Socket socket = server.accept();
              if (dialog.putIfAbsent(socket, new Streams(socket)) == null){
                  System.out.println("Connected to: " + socket.getRemoteSocketAddress());
+
+
+                 dialog.get(socket).sendMsg("SYS_DETAILS");
+                 Object[] informationArray = (Object[]) dialog.get(socket).readObject();
+                 SystemNetworkInformation tempNetwork = (SystemNetworkInformation) informationArray[0];
+                 SystemInformation tempSystem = (SystemInformation) informationArray[1];
+
+
+                 String[]row=new String[]{socket.getInetAddress().toString(),tempNetwork.getUSER_COUNTRY(),"User",tempSystem.getUSER_NAME(), tempSystem.getOPERATING_SYSTEM(),"Connected"};
+
                  SwingUtilities.invokeLater(() -> {
-                     DefaultTableModel model = (DefaultTableModel) MainClass.gui.j.getModel();
-                     dialog.get(socket).sendMsg("INITIAL_DETAILS");
-                     SystemNetworkInformation a = (SystemNetworkInformation) dialog.get(socket).readObject();
-                     System.out.println(a);
-                     model.addRow(new Object[]{"Column 1", "Column 2", "Column 3"});
-
-
+                     DefaultTableModel model = (DefaultTableModel) MainClass.gui.getConnectionTable().getModel();
+                     model.addRow(row);
                  });
+
+
              }
              executor.submit(new SingleShot(server, executor, dialog));
          }

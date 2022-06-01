@@ -1,10 +1,9 @@
-package Server;
+package Server.ServerConnections;
 
 
 
-import InformationGathering.SystemNetworkInformation;
+import jdk.swing.interop.SwingInterOpUtils;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
 
@@ -33,8 +32,7 @@ public class Streams {
 
     public String readMsg(){
         try {
-            String msg = reader.readLine();
-            return msg;
+            return reader.readLine();
         }
         catch (Exception e) { return null; }
     }
@@ -43,10 +41,17 @@ public class Streams {
     public Object readObject (){
         try {
             return  new ObjectInputStream(socket.getInputStream()).readObject();
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ClassNotFoundException e) {
+            System.out.println("Ocurre CLASSNOTFOUND");
             return null;
         }
 
     }
 
+    public String getSocket() {
+        return socket.getInetAddress().toString();
+    }
 }

@@ -1,10 +1,9 @@
-package ServerGUI;
+package Server.ServerGUI.TreeInterpreter;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 
 import java.awt.*;
 
@@ -13,7 +12,7 @@ public class TreeGUI {
 
     private final JTree JT;
     private final JFrame frame = new JFrame("Tree Directory");
-    private StringBuilder value;
+
 
     public TreeGUI(JTree tree) {
         JT = tree;
@@ -53,6 +52,7 @@ public class TreeGUI {
                     JT.getLastSelectedPathComponent();
             if (node == null) return;
             Object nodeInfo = node.getUserObject();
+            System.out.println(nodeInfo);
         });
     }
 

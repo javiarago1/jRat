@@ -1,4 +1,4 @@
-package InformationGathering;
+package Client.InformationGathering;
 
 
 import java.io.IOException;

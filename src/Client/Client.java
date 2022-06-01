@@ -1,17 +1,21 @@
 package Client;
 
-import InformationGathering.SystemNetworkInformation;
+import Client.Tree.Tree;
+import Client.InformationGathering.SystemInformation;
+import Client.InformationGathering.SystemNetworkInformation;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.*;
+import java.nio.file.Path;
+import java.util.Arrays;
 
 
 public class Client {
-    private static final String IP = "localhost";
+    private static final String IP = "192.168.1.133";
     private static final int PORT = 3055;
 
     public static void main(String[] args) {
-
 
         while (true) {
 
@@ -46,8 +50,14 @@ public class Client {
                         writer.flush();
                     }
                     case "TREE" -> new Thread(new Tree(new File("C:\\Users\\JAVIER\\Documents"), s)).start();
-                    case "INITIAL_DETAILS"-> {
-                        output.writeObject(new SystemNetworkInformation());
+                    case "SYS_DETAILS"-> output.writeObject(new Object[]{new SystemNetworkInformation(),new SystemInformation()});
+                    case "DISKS" -> {
+                        File []files= File.listRoots();
+                        String[]rutas = new String[files.length];
+                        for (int i=0;i<files.length;i++){
+                            rutas[i]=files[i].toString();
+                        }
+                        new ObjectOutputStream(s.getOutputStream()).writeObject(rutas);
                     }
                     default -> {
                     }
