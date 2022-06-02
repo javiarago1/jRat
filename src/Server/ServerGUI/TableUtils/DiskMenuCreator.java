@@ -42,7 +42,6 @@ public class DiskMenuCreator {
 
     private ActionListener generateActionListener(String path){
         return e -> {
-            browserMenu.setEnabled(false);
             SwingWorker<Void,Void> swingWorker = new SwingWorker<>() {
                 JTree tempTree;
                 @Override
@@ -57,7 +56,7 @@ public class DiskMenuCreator {
                 @Override
                 protected void done() {
                     new TreeGUI(tempTree);
-                    browserMenu.setEnabled(true);
+
                 }
             };
             swingWorker.execute();

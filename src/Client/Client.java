@@ -25,8 +25,9 @@ public class Client {
 
             System.out.println("Conectado");
 
-            PrintWriter writer = new PrintWriter(s.getOutputStream());
+
             ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
+            PrintWriter writer = new PrintWriter(s.getOutputStream());
             BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
             while (true) {
@@ -55,7 +56,6 @@ public class Client {
                     for (int i = 0; i < files.length; i++) {
                         rutas[i] = files[i].toString();
                     }
-
                     new ObjectOutputStream(s.getOutputStream()).writeObject(rutas);
                 }
             }

