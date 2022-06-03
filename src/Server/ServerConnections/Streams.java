@@ -3,10 +3,8 @@ package Server.ServerConnections;
 
 import Client.InformationGathering.SystemInformation;
 import Client.InformationGathering.SystemNetworkInformation;
-import Server.ServerGUI.MainClass;
-import Server.ServerGUI.TreeInterpreter.TreeGUI;
 
-import javax.swing.*;
+
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -16,9 +14,6 @@ import java.util.concurrent.Executors;
 public class Streams {
     private final ObjectOutputStream output;
     private final ObjectInputStream input;
-
-
-    private TreeGUI treeGUI;
 
     private boolean isWorking;
 
@@ -56,8 +51,7 @@ public class Streams {
     }
 
     public String getIdentifier(){
-        return tempSystemNetworkInformation.getIP()+" - "+tempSystemInformation.getUSER_NAME()+" - "+
-                tempSystemInformation.getOPERATING_SYSTEM();
+        return tempSystemNetworkInformation.getIP()+" - "+tempSystemInformation.getUSER_NAME();
     }
 
 

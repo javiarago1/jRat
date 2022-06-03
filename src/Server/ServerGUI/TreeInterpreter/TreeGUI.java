@@ -2,7 +2,6 @@ package Server.ServerGUI.TreeInterpreter;
 
 import Server.ServerGUI.MainClass;
 import com.formdev.flatlaf.FlatDarculaLaf;
-import com.sun.tools.javac.Main;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -13,12 +12,12 @@ import java.awt.*;
 public class TreeGUI {
 
 
-    private JDialog dialog;
-    private JTree JT;
+    private final JDialog dialog;
+    private final JTree JT;
 
-    public TreeGUI(JTree tree) {
+    public TreeGUI(JTree tree,String identifier) {
         JT=tree;
-        dialog= new JDialog(MainClass.gui.getFrame(),"Tree Directory");
+        dialog= new JDialog(MainClass.gui.getFrame(),"Tree Directory -"+identifier);
         loadStyle();
         addFrame();
         addComponents();

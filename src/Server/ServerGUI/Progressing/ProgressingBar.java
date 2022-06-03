@@ -28,8 +28,8 @@ public class ProgressingBar{
 
 
     public ProgressingBar(String identifier) {
-        dialog= new JDialog(MainClass.gui.getFrame());
         this.identifier=identifier;
+        dialog= new JDialog(MainClass.gui.getFrame(),"Processing - "+identifier);
         loadStyle();
         addFrame();
         addComponents();
@@ -45,7 +45,6 @@ public class ProgressingBar{
             int dotCounter=0;
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.out.println(Thread.currentThread().getName());
                 System.out.println("Still working"+dotSum);
                 processingLabel.setText("Processing files"+dotSum);
                 dotSum.append(dot);
@@ -84,6 +83,7 @@ public class ProgressingBar{
         dialog.setSize(new Dimension(300, 150));
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
         dialog.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -116,7 +116,7 @@ public class ProgressingBar{
 
     public void closeDialog(JTree tree){
         dialog.dispose();
-        new TreeGUI(tree);
+        new TreeGUI(tree,identifier);
     }
 
     private void addProgressionBar(){
