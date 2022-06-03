@@ -21,11 +21,10 @@ public class jRatGUI {
     private JTable connectionTable;
     private JFrame frame;
     private JPopupMenu popupMenu;
-    private final Server server;
-
+    private final  ConcurrentHashMap<Socket, Streams> map;
 
     public jRatGUI(Server server) {
-        this.server=server;
+        map = server.getMap();
         loadStyle();
         setUpFrame();
         addComps();
@@ -38,6 +37,7 @@ public class jRatGUI {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
+
     }
 
     private void loadStyle() {
@@ -99,7 +99,7 @@ public class jRatGUI {
         connectionTable.setComponentPopupMenu(popupMenu);
 
 
-        ConcurrentHashMap<Socket, Streams> map = server.getMap();
+
         connectionTable.addMouseListener(new TablePopUpListener(connectionTable,map,browserMenu));
         browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,map));
         sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable,map));

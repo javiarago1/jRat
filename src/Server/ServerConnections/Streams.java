@@ -55,11 +55,12 @@ public class Streams {
 
     }
 
-
-
-    public void openTreeGUI(JTree tree) {
-        treeGUI = new TreeGUI(MainClass.gui.getFrame(),tree);
+    public String getIdentifier(){
+        return tempSystemNetworkInformation.getIP()+" - "+tempSystemInformation.getUSER_NAME()+" - "+
+                tempSystemInformation.getOPERATING_SYSTEM();
     }
+
+
 
     public SystemInformation getTempSystemInformation() {
         return tempSystemInformation;

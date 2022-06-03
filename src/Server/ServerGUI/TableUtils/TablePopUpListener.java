@@ -31,9 +31,8 @@ public class TablePopUpListener extends MouseAdapter {
         table.setRowSelectionInterval(currentRow, currentRow);
         Streams stream = GetSYS.getStream(map, table);
         assert stream != null;
-        if (stream.isWorking()){
-            browserMenu.setEnabled(false);
-        }
+        browserMenu.setEnabled(!stream.isWorking());
+
     }
 
 

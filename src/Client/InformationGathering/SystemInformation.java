@@ -3,6 +3,8 @@ package Client.InformationGathering;
 
 import java.io.File;
 import java.io.Serializable;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class SystemInformation implements Serializable {
 
@@ -12,13 +14,16 @@ public class SystemInformation implements Serializable {
     private final File[] USER_DISKS;
 
 
-    public SystemInformation(){
+    public SystemInformation()  {
         OPERATING_SYSTEM=getOperatingSystem();
         USER_HOME=getUserHome();
         USER_NAME=getUserName();
         USER_DISKS=getUserDisks();
 
     }
+
+
+
 
     private File[] getUserDisks(){
          return File.listRoots();
@@ -48,6 +53,8 @@ public class SystemInformation implements Serializable {
     public String getUSER_NAME() {
         return USER_NAME;
     }
+
+
 
     public File[] getUSER_DISKS() {
         return USER_DISKS;

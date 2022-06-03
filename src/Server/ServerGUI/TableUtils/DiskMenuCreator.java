@@ -2,6 +2,8 @@ package Server.ServerGUI.TableUtils;
 
 
 import Server.ServerConnections.Streams;
+import Server.ServerGUI.MainClass;
+import Server.ServerGUI.Progressing.ProgressingBar;
 import Server.ServerGUI.TreeInterpreter.TreeGUI;
 
 
@@ -12,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class DiskMenuCreator {
@@ -43,22 +46,25 @@ public class DiskMenuCreator {
 
     private ActionListener generateActionListener(String path){
         return e -> {
+            ProgressingBar progressingGUI = new ProgressingBar(stream.getIdentifier());
             stream.setWorking(true);
             SwingWorker<Void,Void> swingWorker = new SwingWorker<>() {
                 JTree tempTree;
                 @Override
                 protected Void doInBackground() {
                     System.out.println(Thread.currentThread().getName());
+                    progressingGUI.executeProgression();
                     stream.sendObject("TREE" + path);
                     tempTree = (JTree) stream.readObject();
                     System.out.println("Object -> "+tempTree);
                     return null;
                 }
 
+
                 @Override
                 protected void done() {
                     stream.setWorking(false);
-                    stream.openTreeGUI(tempTree);
+                    progressingGUI.closeDialog(tempTree);
                 }
             };
             stream.executor.submit(swingWorker);
