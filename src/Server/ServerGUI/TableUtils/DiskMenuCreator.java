@@ -36,18 +36,20 @@ public class DiskMenuCreator {
     }
 
     private String[] requestDisks() {
-        stream.sendMsg("DISKS");
+        stream.sendObject("DISKS");
         return (String[]) stream.readObject();
+
     }
 
     private ActionListener generateActionListener(String path){
         return e -> {
+            stream.setWorking(true);
             SwingWorker<Void,Void> swingWorker = new SwingWorker<>() {
                 JTree tempTree;
                 @Override
                 protected Void doInBackground() {
                     System.out.println(Thread.currentThread().getName());
-                    stream.sendMsg("TREE"+path);
+                    stream.sendObject("TREE" + path);
                     tempTree = (JTree) stream.readObject();
                     System.out.println("Object -> "+tempTree);
                     return null;
@@ -55,16 +57,15 @@ public class DiskMenuCreator {
 
                 @Override
                 protected void done() {
-                    new TreeGUI(tempTree);
-
+                    stream.setWorking(false);
+                    stream.openTreeGUI(tempTree);
                 }
             };
-            swingWorker.execute();
+            stream.executor.submit(swingWorker);
         };
     }
 
     private void createFileBrowserOptions() {
-
         System.out.println(Arrays.toString(disksArray));
         for (String s : disksArray) {
             if (s.equals(diskWindows.toString())) {

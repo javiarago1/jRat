@@ -1,4 +1,4 @@
-package Server.ServerGUI.TableUtils;
+package Server.ServerGUI.TableUtils.TableConfig;
 
 import javax.swing.table.DefaultTableModel;
 

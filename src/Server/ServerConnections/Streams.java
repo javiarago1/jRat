@@ -1,58 +1,64 @@
 package Server.ServerConnections;
 
 
-
 import Client.InformationGathering.SystemInformation;
 import Client.InformationGathering.SystemNetworkInformation;
+import Server.ServerGUI.MainClass;
+import Server.ServerGUI.TreeInterpreter.TreeGUI;
 
+import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 public class Streams {
-    private PrintWriter writer;
-    private BufferedReader reader;
-    private Socket socket;
+    private final ObjectOutputStream output;
+    private final ObjectInputStream input;
+
+
+    private TreeGUI treeGUI;
+
+    private boolean isWorking;
 
     private SystemInformation tempSystemInformation;
     private SystemNetworkInformation tempSystemNetworkInformation;
 
+    public ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public Streams(Socket socket) throws IOException {
         if (socket == null) throw new IllegalArgumentException();
-        this.socket = socket;
-        writer = new PrintWriter(socket.getOutputStream());
-        reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        output = new ObjectOutputStream(socket.getOutputStream());
+        input = new ObjectInputStream(socket.getInputStream());
 
     }
 
-    public boolean sendMsg(String msg){
+    public void sendObject(Object object) {
         try {
-            writer.println(msg);
-            writer.flush();
+            output.writeObject(object);
+        } catch (Exception ignored) {
         }
-        catch (Exception e) { return false; }
-        return true;
-    }
-
-    public String readMsg(){
-        try {
-            return reader.readLine();
-        }
-        catch (Exception e) { return null; }
     }
 
 
-    public Object readObject (){
+    public Object readObject() {
         try {
-            return  new ObjectInputStream(socket.getInputStream()).readObject();
+            return input.readObject();
         } catch (IOException e) {
             e.printStackTrace();
             return null;
         } catch (ClassNotFoundException e) {
-            System.out.println("Ocurre CLASSNOTFOUND");
+            System.out.println("Ocurre CLASS NOT FOUND");
             return null;
         }
 
+    }
+
+
+
+    public void openTreeGUI(JTree tree) {
+        treeGUI = new TreeGUI(MainClass.gui.getFrame(),tree);
     }
 
     public SystemInformation getTempSystemInformation() {
@@ -69,5 +75,13 @@ public class Streams {
 
     public void setTempSystemNetworkInformation(SystemNetworkInformation tempSystemNetworkInformation) {
         this.tempSystemNetworkInformation = tempSystemNetworkInformation;
+    }
+
+    public boolean isWorking() {
+        return isWorking;
+    }
+
+    public void setWorking(boolean working) {
+        isWorking = working;
     }
 }

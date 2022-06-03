@@ -11,10 +11,11 @@ import java.awt.*;
 public class TreeGUI {
 
     private final JTree JT;
-    private final JFrame frame = new JFrame("Tree Directory");
+    private JDialog dialog;
 
 
-    public TreeGUI(JTree tree) {
+    public TreeGUI(JFrame frame,JTree tree) {
+        dialog= new JDialog(frame,"Tree Directory");
         JT = tree;
         loadStyle();
         addFrame();
@@ -23,7 +24,7 @@ public class TreeGUI {
     }
 
     private void startFrame(){
-        frame.setVisible(true);
+        dialog.setVisible(true);
     }
 
     private void loadStyle(){
@@ -31,19 +32,31 @@ public class TreeGUI {
     }
 
     private void addFrame() {
-        frame.setPreferredSize(new Dimension(400, 300));
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setLocationByPlatform(true);
+        dialog.setPreferredSize(new Dimension(400, 300));
+        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setLocationByPlatform(true);
 
     }
+
+
 
     private void addComponents() {
         JT.setShowsRootHandles(true);
         createListener();
+        createMenuBar();
         JScrollPane scrollPane = new JScrollPane(JT);
-        frame.add(scrollPane);
+        dialog.add(scrollPane);
 
+    }
+
+    private void createMenuBar(){
+        JMenuBar menu_bar = new JMenuBar();
+        JMenu menu = new JMenu("size");
+        JMenuItem size = new JMenuItem("size");
+        menu.add(size);
+        menu_bar.add(menu);
+        dialog.setJMenuBar(menu_bar);
     }
 
     private void createListener() {

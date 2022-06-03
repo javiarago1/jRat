@@ -23,9 +23,16 @@ public class SystemInformationListener implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Streams stream = GetSYS.getStream(map, table);
         assert stream != null;
-        //stream.sendMsg("SYS_DETAILS");
-        //Object[] informationArray = (Object[]) stream.readObject();
-        //System.out.println(informationArray[0]);
+        stream.executor.submit(() -> {
+            System.out.println(Thread.currentThread().getName());
+            stream.sendObject("SYS_DETAILS");
+            Object[] informationArray = (Object[]) stream.readObject();
+            System.out.println(informationArray[0]);
+        });
+
+
 
     }
+
+
 }

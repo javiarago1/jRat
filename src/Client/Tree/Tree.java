@@ -5,17 +5,18 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.Socket;
+
 
 public class Tree implements Runnable{
     private final File rootPath;
     private final DefaultMutableTreeNode rootNode;
     private final JTree JT;
-    private final Socket socket;
+    private final ObjectOutputStream output;
 
 
-    public Tree(File rootPath, Socket socket){
-        this.socket=socket;
+    public Tree(File rootPath, ObjectOutputStream output){
+
+        this.output=output;
         this.rootPath=rootPath;
         this.rootNode=new DefaultMutableTreeNode(rootPath.getName());
         this.JT=new JTree(rootNode);
@@ -42,8 +43,7 @@ public class Tree implements Runnable{
 
     private void sendObject(){
         try {
-            ObjectOutputStream objectWriter = new ObjectOutputStream(socket.getOutputStream());
-            objectWriter.writeObject(JT);
+            output.writeObject(JT);
         } catch (IOException e) {
             e.printStackTrace();
         }

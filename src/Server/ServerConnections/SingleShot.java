@@ -31,7 +31,7 @@
                  System.out.println("Connected to: " + socket.getRemoteSocketAddress());
 
 
-                 dialog.get(socket).sendMsg("SYS_DETAILS");
+                 dialog.get(socket).sendObject(new Object[2]);
                  Object[] informationArray = (Object[]) dialog.get(socket).readObject();
                  SystemNetworkInformation tempNetwork = (SystemNetworkInformation) informationArray[0];
                  SystemInformation tempSystem = (SystemInformation) informationArray[1];

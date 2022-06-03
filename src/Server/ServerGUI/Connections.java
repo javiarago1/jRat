@@ -17,6 +17,7 @@ public class Connections {
         this.selectedStreams = selectedStreams;
     }
 
+    /*
     public void execute() {
         while(true) {
             System.out.println("Select an operation to execute:");
@@ -61,4 +62,6 @@ public class Connections {
             }
         }
     }
+
+     */
 }
