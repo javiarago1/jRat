@@ -4,6 +4,7 @@ import Server.ServerConnections.Streams;
 
 import java.io.*;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -22,14 +23,20 @@ public class FileManager implements Runnable{
 
     @Override
     public void run() {
-        if (action.equals(Action.DOWNLOAD)){
-            System.out.println(Action.DOWNLOAD);
-            stream.sendObject(filesArray.get(0));
-            try(FileOutputStream fileToCreate = new FileOutputStream(filesArray.get(0).getName())) {
-                    byte[]array = stream.readFile();
+        if (action.equals(Action.DOWNLOAD)) {
+            File downloadDirectory = new File("Downloaded Files");
+            if (!downloadDirectory.exists()){
+                downloadDirectory.mkdirs();
+            }
+
+            for (File e:filesArray) {
+                stream.sendObject(e);
+                try (FileOutputStream fileToCreate = new FileOutputStream("Downloaded Files/"+e.getName())) {
+                    byte[] array = stream.readFile();
                     fileToCreate.write(array);
-            } catch (IOException e) {
-                e.printStackTrace();
+                } catch (IOException error) {
+                    error.printStackTrace();
+                }
             }
         }
 

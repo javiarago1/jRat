@@ -7,6 +7,7 @@ import javax.swing.tree.TreeSelectionModel;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.Objects;
 
 
 public class Tree {
@@ -30,14 +31,18 @@ public class Tree {
         if (arrayFiles==null)return;
         for (File e:arrayFiles){
             if (e.isDirectory()){
+
                 System.out.println(file);
+               // if (e.getName().equals("Center"))break;
                 DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
                 treeNode.add(fatherNode);
                 executeFileRecursion(e,fatherNode);
             }
             else {
+
                 treeNode.add(new DefaultMutableTreeNode(e.getName()));
                 System.out.println(e.getName());
+                if (e.getName().equals("Center"))break;
             }
         }
 

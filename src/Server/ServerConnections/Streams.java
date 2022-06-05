@@ -29,11 +29,7 @@ public class Streams {
         input = new ObjectInputStream(socket.getInputStream());
         dataInput= new DataInputStream(socket.getInputStream());
 
-
-
     }
-
-
 
     public byte[] readFile(){
         int length=0;
@@ -43,13 +39,12 @@ public class Streams {
             e.printStackTrace();
         }
 
-
-        byte[]filecontent;
+        byte[]byteContent;
         if (length>0){
-            filecontent=new byte[length];
+            byteContent=new byte[length];
             try {
-                dataInput.readFully(filecontent,0,length);
-                return filecontent;
+                dataInput.readFully(byteContent,0,length);
+                return byteContent;
             } catch (IOException e) {
                 e.printStackTrace();
 
