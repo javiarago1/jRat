@@ -1,8 +1,8 @@
 package Server.ServerConnections;
 
 
-import Client.InformationGathering.SystemInformation;
-import Client.InformationGathering.SystemNetworkInformation;
+import Client.InformationGathering.System.SystemInformation;
+import Client.InformationGathering.System.SystemNetworkInformation;
 
 
 import java.io.*;
@@ -21,11 +21,15 @@ public class Streams {
     private SystemNetworkInformation tempSystemNetworkInformation;
 
     public ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Socket socket;
 
     public Streams(Socket socket) throws IOException {
         if (socket == null) throw new IllegalArgumentException();
+        this.socket = socket;
         output = new ObjectOutputStream(socket.getOutputStream());
         input = new ObjectInputStream(socket.getInputStream());
+
+
 
     }
 
@@ -47,14 +51,22 @@ public class Streams {
             System.out.println("Ocurre CLASS NOT FOUND");
             return null;
         }
-
     }
+
+    public DataInputStream getDataInputStream(){
+        try {
+            return new DataInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+
+        }
+    }
+
 
     public String getIdentifier(){
         return tempSystemNetworkInformation.getIP()+" - "+tempSystemInformation.getUSER_NAME();
     }
-
-
 
     public SystemInformation getTempSystemInformation() {
         return tempSystemInformation;

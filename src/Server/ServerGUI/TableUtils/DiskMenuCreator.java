@@ -1,27 +1,27 @@
 package Server.ServerGUI.TableUtils;
 
 
+import Client.InformationGathering.System.InfoObject;
 import Server.ServerConnections.Streams;
-import Server.ServerGUI.MainClass;
 import Server.ServerGUI.Progressing.ProgressingBar;
-import Server.ServerGUI.TreeInterpreter.TreeGUI;
+
 
 
 import javax.swing.*;
 
 
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.List;
 
 
 public class DiskMenuCreator {
     private final JMenu browserMenu;
     private final Streams stream;
     private final String[] disksArray;
-    private final String[] defaultPaths = new String[]{"Downloads", "Documents", "Desktop", "Pictures", "Music", "Videos"};
+    private final String[] defaultPaths = new String[]{"Downloads\\", "Documents\\", "Desktop\\", "Pictures\\", "Music\\", "Videos\\"};
     private final Path userPath;
     private final Path diskWindows;
 
@@ -54,7 +54,8 @@ public class DiskMenuCreator {
                 protected Void doInBackground() {
                     System.out.println(Thread.currentThread().getName());
                     progressingGUI.executeProgression();
-                    stream.sendObject("TREE" + path);
+                    System.out.println(path);
+                    stream.sendObject(new InfoObject(new File(path),"TREE"));
                     tempTree = (JTree) stream.readObject();
                     System.out.println("Object -> "+tempTree);
                     return null;
@@ -64,7 +65,7 @@ public class DiskMenuCreator {
                 @Override
                 protected void done() {
                     stream.setWorking(false);
-                    progressingGUI.closeDialog(tempTree);
+                    progressingGUI.closeDialog(tempTree,stream);
                 }
             };
             stream.executor.submit(swingWorker);
@@ -77,6 +78,7 @@ public class DiskMenuCreator {
             if (s.equals(diskWindows.toString())) {
                 JMenu windowsDiskMenu = new JMenu(stream.getTempSystemInformation().getOPERATING_SYSTEM());
                 for (String e : defaultPaths) {
+                    e=e.substring(0,e.length()-1);
                     JMenuItem item = new JMenuItem(e);
                     item.addActionListener(generateActionListener(userPath+"\\"+e));
                     windowsDiskMenu.add(item);

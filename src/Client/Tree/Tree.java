@@ -1,25 +1,28 @@
 package Client.Tree;
 
+
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreeSelectionModel;
 import java.io.File;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
-public class Tree implements Runnable{
+public class Tree {
     private final File rootPath;
     private final DefaultMutableTreeNode rootNode;
-    private final JTree JT;
+    private final JTree tree;
     private final ObjectOutputStream output;
 
 
-    public Tree(File rootPath, ObjectOutputStream output){
 
+    public Tree(File rootPath, ObjectOutputStream output){
         this.output=output;
         this.rootPath=rootPath;
-        this.rootNode=new DefaultMutableTreeNode(rootPath.getName());
-        this.JT=new JTree(rootNode);
+        // Quito el slash con substring para la lectura de JTree
+        this.rootNode=new DefaultMutableTreeNode(rootPath.toString());
+        tree=new JTree(rootNode);
     }
 
     private void executeFileRecursion(File file,DefaultMutableTreeNode treeNode){
@@ -40,19 +43,19 @@ public class Tree implements Runnable{
 
     }
 
+    public void start(){
+        executeFileRecursion(rootPath, rootNode);
+        sendObject();
+    }
+
 
     private void sendObject(){
         try {
-            output.writeObject(JT);
+            output.writeObject(tree);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @Override
-    public void run() {
-        executeFileRecursion(rootPath, rootNode);
-        sendObject();
 
-    }
 }

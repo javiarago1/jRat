@@ -1,22 +1,26 @@
 package Server.ServerGUI.TreeInterpreter;
 
+import Server.ServerConnections.Streams;
 import Server.ServerGUI.MainClass;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
 import java.awt.*;
-
+import java.util.Arrays;
 
 public class TreeGUI {
 
 
     private final JDialog dialog;
-    private final JTree JT;
+    private final JTree tree;
+    private Streams stream;
 
-    public TreeGUI(JTree tree,String identifier) {
-        JT=tree;
+
+    public TreeGUI(JTree tree, String identifier, Streams stream) {
+        this.stream=stream;
+        this.tree=tree;
         dialog= new JDialog(MainClass.gui.getFrame(),"Tree Directory -"+identifier);
         loadStyle();
         addFrame();
@@ -36,18 +40,35 @@ public class TreeGUI {
         dialog.setSize(new Dimension(400, 300));
         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         dialog.setLocationRelativeTo(null);
-
     }
 
 
-
     private void addComponents() {
-        JT.setShowsRootHandles(true);
-        createListener();
+        tree.setShowsRootHandles(true);
         createMenuBar();
-        JScrollPane scrollPane = new JScrollPane(JT);
+        createPopUpMenu();
+        JScrollPane scrollPane = new JScrollPane(tree);
         dialog.add(scrollPane);
 
+    }
+
+    private void createPopUpMenu(){
+
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem downloadItem = new JMenuItem("Download");
+        JMenuItem copyItem = new JMenuItem("Copy");
+        JMenuItem moveItem = new JMenuItem("Move");
+
+        downloadItem.addActionListener(new MenuItemListener(tree,stream));
+
+        popupMenu.add(downloadItem);
+        popupMenu.add(copyItem);
+        popupMenu.add(moveItem);
+
+
+
+
+        tree.addMouseListener(new PopUpTreeListener(tree, popupMenu));
     }
 
     private void createMenuBar(){
@@ -59,15 +80,7 @@ public class TreeGUI {
         dialog.setJMenuBar(menu_bar);
     }
 
-    private void createListener() {
-        JT.addTreeSelectionListener(e -> {
-            DefaultMutableTreeNode node = (DefaultMutableTreeNode)
-                    JT.getLastSelectedPathComponent();
-            if (node == null) return;
-            Object nodeInfo = node.getUserObject();
-            System.out.println(nodeInfo);
-        });
-    }
+
 
 
 }

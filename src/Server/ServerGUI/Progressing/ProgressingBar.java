@@ -1,5 +1,6 @@
 package Server.ServerGUI.Progressing;
 
+import Server.ServerConnections.Streams;
 import Server.ServerGUI.MainClass;
 import Server.ServerGUI.TreeInterpreter.TreeGUI;
 import com.formdev.flatlaf.FlatDarculaLaf;
@@ -114,9 +115,9 @@ public class ProgressingBar{
         addProgressionBar();
     }
 
-    public void closeDialog(JTree tree){
+    public void closeDialog(JTree tree, Streams stream){
         dialog.dispose();
-        new TreeGUI(tree,identifier);
+        new TreeGUI(tree,identifier,stream);
     }
 
     private void addProgressionBar(){

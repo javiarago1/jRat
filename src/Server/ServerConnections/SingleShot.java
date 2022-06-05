@@ -1,7 +1,7 @@
  package Server.ServerConnections;
 
- import Client.InformationGathering.SystemInformation;
- import Client.InformationGathering.SystemNetworkInformation;
+ import Client.InformationGathering.System.SystemInformation;
+ import Client.InformationGathering.System.SystemNetworkInformation;
  import Server.ServerGUI.MainClass;
 
  import javax.swing.*;

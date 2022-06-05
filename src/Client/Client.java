@@ -1,8 +1,9 @@
 package Client;
 
+import Client.InformationGathering.System.InfoObject;
 import Client.Tree.Tree;
-import Client.InformationGathering.SystemInformation;
-import Client.InformationGathering.SystemNetworkInformation;
+import Client.InformationGathering.System.SystemInformation;
+import Client.InformationGathering.System.SystemNetworkInformation;
 
 import java.io.*;
 import java.net.*;
@@ -24,6 +25,7 @@ public class Client {
 
                 ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
                 ObjectInputStream input = new ObjectInputStream(s.getInputStream());
+                DataOutputStream output2 = new DataOutputStream(s.getOutputStream());
 
 
                 Object reader;
@@ -39,10 +41,37 @@ public class Client {
                             rutas[i] = files[i].toString();
                         }
                         output.writeObject(rutas);
-                    } else if (reader instanceof String e && e.startsWith("TREE")) {
-                        new Thread(new Tree(new File(e.substring(4)), output)).start();
+                    } else if (reader instanceof InfoObject e && e.getCommand().equals("TREE")) {
+                        System.out.println("Path recibido "+e.getPath());
+                        new Tree(e.getPath(), output).start();
                     } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
+                    } else if (reader instanceof File file){
+                        System.out.println("Recibido "+file);
+                        System.out.println(file.getAbsolutePath());
+                        File file1 =  new File("C:\\Users\\JAVIER\\Documents\\TIERS\\TIER 4\\TIER3_18X18.png");
+
+                        output2 = new DataOutputStream(s.getOutputStream());
+
+                        FileInputStream fileInputStream = new FileInputStream(file1);
+
+                        String nameOfFile = file1.getName();
+                        byte[]fileName = nameOfFile.getBytes();
+
+                        byte[]fileContentBytes = new byte[(int) file1.length()];
+                        fileInputStream.read(fileContentBytes);
+
+                        output2.writeInt(fileName.length);
+                        output2.write(fileName);
+
+                        output2.writeInt(fileContentBytes.length);
+                        output2.write(fileContentBytes);
+
+
+
+
+
+
                     }
 
                 } while (reader != null);
