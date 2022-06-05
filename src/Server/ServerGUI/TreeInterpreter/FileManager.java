@@ -31,17 +31,10 @@ public class FileManager implements Runnable{
             DataInputStream inputStream = stream.getDataInputStream();
             System.out.println("de aki pasa");
             try {
-                int filenamelength = inputStream.readInt();
-                System.out.println("de aki pasa 2");
-                System.out.println(filenamelength);
 
-                if (filenamelength>0){
 
-                    byte[]filenamebytes = new byte[filenamelength];
-                    inputStream.readFully(filenamebytes,0,filenamelength);
-                    String filename = new String(filenamebytes);
 
-                    System.out.println("Nombre de archvo"+filename);
+
                     int filecontentlength = inputStream.readInt();
 
                     byte[]filecontent=null;
@@ -53,14 +46,14 @@ public class FileManager implements Runnable{
 
 
 
-                    File toDonwload = new File(filename);
+                    File toDonwload = new File("image.png");
                     FileOutputStream filetocreate = new FileOutputStream(toDonwload);
                     assert filecontent != null;
                     filetocreate.write(filecontent);
                     filetocreate.close();
 
 
-                }
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

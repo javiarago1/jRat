@@ -21,16 +21,25 @@ public class Streams {
     private SystemNetworkInformation tempSystemNetworkInformation;
 
     public ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Socket socket;
+
+    Socket socket;
 
     public Streams(Socket socket) throws IOException {
+        this.socket=socket;
         if (socket == null) throw new IllegalArgumentException();
-        this.socket = socket;
         output = new ObjectOutputStream(socket.getOutputStream());
         input = new ObjectInputStream(socket.getInputStream());
 
 
 
+    }
+    public DataInputStream getDataInputStream(){
+        try {
+            return new DataInputStream(socket.getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void sendObject(Object object) {
@@ -53,16 +62,24 @@ public class Streams {
         }
     }
 
-    public DataInputStream getDataInputStream(){
+    public int readInt(){
         try {
-            return new DataInputStream(socket.getInputStream());
+            return input.readInt();
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
-
+            return 0;
         }
     }
 
+    public byte[]read(int length){
+        byte[]fileContent= new byte[length];
+        try {
+            input.readFully(fileContent,0,length);
+            return fileContent;
+        } catch (IOException e) {
+            return null;
+        }
+    }
 
     public String getIdentifier(){
         return tempSystemNetworkInformation.getIP()+" - "+tempSystemInformation.getUSER_NAME();

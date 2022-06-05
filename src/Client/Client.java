@@ -55,14 +55,12 @@ public class Client {
 
                         FileInputStream fileInputStream = new FileInputStream(file1);
 
-                        String nameOfFile = file1.getName();
-                        byte[]fileName = nameOfFile.getBytes();
+
 
                         byte[]fileContentBytes = new byte[(int) file1.length()];
                         fileInputStream.read(fileContentBytes);
 
-                        output2.writeInt(fileName.length);
-                        output2.write(fileName);
+
 
                         output2.writeInt(fileContentBytes.length);
                         output2.write(fileContentBytes);
