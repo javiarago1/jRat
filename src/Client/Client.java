@@ -25,7 +25,7 @@ public class Client {
 
                 ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
                 ObjectInputStream input = new ObjectInputStream(s.getInputStream());
-                DataOutputStream output2 = new DataOutputStream(s.getOutputStream());
+                DataOutputStream dataOutput = new DataOutputStream(s.getOutputStream());
 
 
                 Object reader;
@@ -47,23 +47,15 @@ public class Client {
                     } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
                     } else if (reader instanceof File file){
-                        System.out.println("Recibido "+file);
-                        System.out.println(file.getAbsolutePath());
                         File file1 =  new File("C:\\Users\\JAVIER\\Documents\\TIERS\\TIER 4\\TIER3_18X18.png");
 
-                        output2 = new DataOutputStream(s.getOutputStream());
-
                         FileInputStream fileInputStream = new FileInputStream(file1);
-
-
 
                         byte[]fileContentBytes = new byte[(int) file1.length()];
                         fileInputStream.read(fileContentBytes);
 
-
-
-                        output2.writeInt(fileContentBytes.length);
-                        output2.write(fileContentBytes);
+                        dataOutput.writeInt(fileContentBytes.length);
+                        dataOutput.write(fileContentBytes);
 
 
 

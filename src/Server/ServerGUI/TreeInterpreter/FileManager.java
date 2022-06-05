@@ -2,12 +2,10 @@ package Server.ServerGUI.TreeInterpreter;
 
 import Server.ServerConnections.Streams;
 
-import java.io.DataInputStream;
-import java.io.File;
+import java.io.*;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FileManager implements Runnable{
 
@@ -35,21 +33,14 @@ public class FileManager implements Runnable{
 
 
 
-                    int filecontentlength = inputStream.readInt();
 
-                    byte[]filecontent=null;
-                    if (filecontentlength>0){
-                        filecontent=new byte[filecontentlength];
-                        inputStream.readFully(filecontent,0,filecontentlength);
-
-                    }
+                    byte[]array = stream.readInt();
 
 
-
-                    File toDonwload = new File("image.png");
+                    File toDonwload = new File("file.png");
                     FileOutputStream filetocreate = new FileOutputStream(toDonwload);
-                    assert filecontent != null;
-                    filetocreate.write(filecontent);
+
+                    filetocreate.write(array);
                     filetocreate.close();
 
 
