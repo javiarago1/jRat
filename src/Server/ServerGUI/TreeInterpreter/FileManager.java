@@ -25,26 +25,9 @@ public class FileManager implements Runnable{
         if (action.equals(Action.DOWNLOAD)){
             System.out.println(Action.DOWNLOAD);
             stream.sendObject(filesArray.get(0));
-            System.out.println("nopasa");
-            DataInputStream inputStream = stream.getDataInputStream();
-            System.out.println("de aki pasa");
-            try {
-
-
-
-
-
-                    byte[]array = stream.readInt();
-
-
-                    File toDonwload = new File("file.png");
-                    FileOutputStream filetocreate = new FileOutputStream(toDonwload);
-
-                    filetocreate.write(array);
-                    filetocreate.close();
-
-
-
+            try(FileOutputStream fileToCreate = new FileOutputStream(filesArray.get(0).getName())) {
+                    byte[]array = stream.readFile();
+                    fileToCreate.write(array);
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -47,21 +47,12 @@ public class Client {
                     } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
                     } else if (reader instanceof File file){
-                        File file1 =  new File("C:\\Users\\JAVIER\\Documents\\TIERS\\TIER 4\\TIER3_18X18.png");
-
-                        FileInputStream fileInputStream = new FileInputStream(file1);
-
-                        byte[]fileContentBytes = new byte[(int) file1.length()];
-                        fileInputStream.read(fileContentBytes);
-
-                        dataOutput.writeInt(fileContentBytes.length);
+                        FileInputStream fileInputStream = new FileInputStream(file);
+                        byte[]fileContentBytes = new byte[(int) file.length()];
+                        int length = fileInputStream.read(fileContentBytes);
+                        fileInputStream.close();
+                        dataOutput.writeInt(length);
                         dataOutput.write(fileContentBytes);
-
-
-
-
-
-
                     }
 
                 } while (reader != null);

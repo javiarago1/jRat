@@ -5,8 +5,6 @@ import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
 
 
-import javax.xml.crypto.Data;
-import java.awt.image.DataBufferInt;
 import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
@@ -25,10 +23,7 @@ public class Streams {
 
     public ExecutorService executor = Executors.newSingleThreadExecutor();
 
-    Socket socket;
-
     public Streams(Socket socket) throws IOException {
-        this.socket=socket;
         if (socket == null) throw new IllegalArgumentException();
         output = new ObjectOutputStream(socket.getOutputStream());
         input = new ObjectInputStream(socket.getInputStream());
@@ -39,20 +34,21 @@ public class Streams {
     }
 
 
-    public byte[] readInt(){
-        int filecontentlength=0;
+
+    public byte[] readFile(){
+        int length=0;
         try {
-            filecontentlength = dataInput.readInt();
+            length = dataInput.readInt();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
 
         byte[]filecontent;
-        if (filecontentlength>0){
-            filecontent=new byte[filecontentlength];
+        if (length>0){
+            filecontent=new byte[length];
             try {
-                dataInput.readFully(filecontent,0,filecontentlength);
+                dataInput.readFully(filecontent,0,length);
                 return filecontent;
             } catch (IOException e) {
                 e.printStackTrace();
@@ -62,9 +58,6 @@ public class Streams {
         return null;
     }
 
-    public DataInputStream getDataInputStream(){
-        return dataInput;
-    }
 
     public void sendObject(Object object) {
         try {
