@@ -2,14 +2,26 @@ package Client.InformationGathering.System;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class InfoObject implements Serializable {
-    File path;
-    String command;
+    private File path;
+    private String command;
+    private ArrayList<File>fileArray;
+
+
+    public InfoObject(ArrayList<File>fileArray,String command){
+        this.fileArray=fileArray;
+        this.command=command;
+    }
 
     public InfoObject(File route, String command) {
         this.path = route;
         this.command = command;
+    }
+
+    public ArrayList<File> getFileArray() {
+        return fileArray;
     }
 
     public File getPath() {
@@ -19,4 +31,5 @@ public class InfoObject implements Serializable {
     public String getCommand() {
         return command;
     }
+
 }
