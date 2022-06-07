@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class DiskMenuCreator {
     private final JMenu browserMenu;
     private final Streams stream;
-    private final String[] disksArray;
+    private final File[] disksArray;
     private final String[] defaultPaths = new String[]{"Downloads\\", "Documents\\", "Desktop\\", "Pictures\\", "Music\\", "Videos\\"};
     private final Path userPath;
     private final Path diskWindows;
@@ -38,20 +38,20 @@ public class DiskMenuCreator {
         createFileBrowserOptions();
     }
 
-    private String[] requestDisks() {
+    private File[] requestDisks() {
         stream.sendObject("DISKS");
-        return (String[]) stream.readObject();
+        return (File[])stream.readObject();
 
     }
 
     private ActionListener generateActionListener(String path){
         return e -> {
             ProgressingBar progressingGUI = new ProgressingBar(stream.getIdentifier());
-            stream.setWorking(true);
             SwingWorker<Void,Void> swingWorker = new SwingWorker<>() {
                 JTree tempTree;
                 @Override
                 protected Void doInBackground() {
+                    stream.setWorking(true);
                     System.out.println(Thread.currentThread().getName());
                     progressingGUI.executeProgression();
                     System.out.println(path);
@@ -60,7 +60,6 @@ public class DiskMenuCreator {
                     System.out.println("Object -> "+tempTree);
                     return null;
                 }
-
 
                 @Override
                 protected void done() {
@@ -74,8 +73,8 @@ public class DiskMenuCreator {
 
     private void createFileBrowserOptions() {
         System.out.println(Arrays.toString(disksArray));
-        for (String s : disksArray) {
-            if (s.equals(diskWindows.toString())) {
+        for (File s : disksArray) {
+            if (s.toString().equals(diskWindows.toString())) {
                 JMenu windowsDiskMenu = new JMenu(stream.getTempSystemInformation().getOPERATING_SYSTEM());
                 for (String e : defaultPaths) {
                     e=e.substring(0,e.length()-1);
@@ -85,8 +84,8 @@ public class DiskMenuCreator {
                 }
                 browserMenu.add(windowsDiskMenu);
             }
-            JMenuItem tempMenuItem = new JMenuItem(s);
-            tempMenuItem.addActionListener(generateActionListener(s));
+            JMenuItem tempMenuItem = new JMenuItem(s.toString());
+            tempMenuItem.addActionListener(generateActionListener(s.toString()));
 
             browserMenu.add(tempMenuItem);
 
