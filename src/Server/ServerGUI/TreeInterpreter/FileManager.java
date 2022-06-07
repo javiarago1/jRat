@@ -1,22 +1,24 @@
 package Server.ServerGUI.TreeInterpreter;
 
+import Client.InformationGathering.System.InfoObject;
 import Server.ServerConnections.Streams;
+import net.lingala.zip4j.ZipFile;
 
 import java.io.*;
 
-import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 
 public class FileManager implements Runnable{
 
 
-    private ArrayList<File>filesArray;
-    private Streams stream;
-    private Action action;
+    private final ArrayList<File> filesArray;
+    private final Streams stream;
+    private final Action action;
 
     public FileManager(ArrayList<File> filesArray, Streams stream, Action action){
-        this.filesArray=filesArray;
+        this.filesArray=new ArrayList<>(filesArray);
         this.stream=stream;
         this.action=action;
     }
@@ -24,21 +26,27 @@ public class FileManager implements Runnable{
     @Override
     public void run() {
         if (action.equals(Action.DOWNLOAD)) {
-            File downloadDirectory = new File("Downloaded Files");
-            if (!downloadDirectory.exists()){
-                downloadDirectory.mkdirs();
-            }
-
-            for (File e:filesArray) {
-                stream.sendObject(e);
-                try (FileOutputStream fileToCreate = new FileOutputStream("Downloaded Files/"+e.getName())) {
+            System.out.println("Archivos que voy a enviar -> "+filesArray);
+            stream.sendObject(new InfoObject(filesArray,"DOWNLOAD"));
+            File sessionDirectory = new File("Downloaded Files"+"\\"+stream.getIdentifier()+"\\"+getTime());
+            sessionDirectory.mkdirs();
+                try (FileOutputStream fileToCreate = new FileOutputStream(sessionDirectory+"/temp.zip")) {
                     byte[] array = stream.readFile();
                     fileToCreate.write(array);
+                    System.out.println("Downloaded correctly");
+                    new ZipFile(sessionDirectory+"/temp.zip").extractAll(sessionDirectory.toString());
+                    System.out.println("Extraction finished properly");
                 } catch (IOException error) {
                     error.printStackTrace();
                 }
-            }
         }
 
     }
+
+    private String getTime(){
+        SimpleDateFormat formatter= new SimpleDateFormat("[yyyy-MM-dd] - [HH-mm-ss]");
+        Date date = new Date(System.currentTimeMillis());
+        return formatter.format(date);
+    }
+
 }
