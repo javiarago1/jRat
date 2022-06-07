@@ -9,7 +9,7 @@ import net.lingala.zip4j.ZipFile;
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Client {
     private static final String IP = "192.168.1.133";
@@ -34,38 +34,41 @@ public class Client {
                 Object reader;
                 do {
                     reader = input.readObject();
-
                     if (reader instanceof Object[]) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
                     } else if (reader instanceof String e && e.equals("DISKS")) {
                         output.writeObject(File.listRoots());
-
-                    } else if (reader instanceof InfoObject e && e.getCommand().equals("TREE")) {
-                        System.out.println("Path recibido " + e.getPath());
-                        new Tree(e.getPath(), output).start();
                     } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
-                    } else if (reader instanceof InfoObject e && e.getCommand().equals("DOWNLOAD")) {
-                        ArrayList<File>fileArray = new ArrayList<>(e.getFileArray());
-                        System.out.println(fileArray);
-                        ZipFile zipFile = new ZipFile("fichero.zip");
-                        for (File a : fileArray) {
-                            if (a.isDirectory()) {
-                                zipFile.addFolder(a);
-                            } else {
-                                zipFile.addFile(a);
+                    } else if (reader instanceof InfoObject e) {
+                        switch (e.getCommand()) {
+                            case "TREE" -> {
+                                System.out.println("Path recibido " + e.getPath());
+                                new Tree(e.getPath(), output).start();
+                            }
+                            case "DOWNLOAD" -> {
+                                ArrayList<File> fileArray = new ArrayList<>(e.getFileArray());
+                                System.out.println(fileArray);
+                                ZipFile zipFile = new ZipFile("fichero.zip");
+                                for (File a : fileArray) {
+                                    if (a.isDirectory()) {
+                                        zipFile.addFolder(a);
+                                    } else {
+                                        zipFile.addFile(a);
+                                    }
+                                }
+                                File zipToSend = zipFile.getFile();
+                                FileInputStream fileInputStream = new FileInputStream(zipToSend);
+                                byte[] fileContentBytes = new byte[(int) zipToSend.length()];
+                                int length = fileInputStream.read(fileContentBytes);
+                                fileInputStream.close();
+                                dataOutput.writeInt(length);
+                                dataOutput.write(fileContentBytes);
+                                zipToSend.delete();
                             }
                         }
-                        File zipToSend = zipFile.getFile();
-                        FileInputStream fileInputStream = new FileInputStream(zipToSend);
-                        byte[] fileContentBytes = new byte[(int) zipToSend.length()];
-                        int length = fileInputStream.read(fileContentBytes);
-                        fileInputStream.close();
-                        dataOutput.writeInt(length);
-                        dataOutput.write(fileContentBytes);
-                        zipToSend.delete();
-
                     }
+
 
                 } while (reader != null);
             } catch (ConnectException e) {
