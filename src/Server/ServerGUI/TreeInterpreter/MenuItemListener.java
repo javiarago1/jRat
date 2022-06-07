@@ -34,6 +34,9 @@ public class MenuItemListener implements ActionListener {
                 }
                 filesArray.add(new File(value.toString()));
             }
+            for (File ex:filesArray){
+                System.out.println(ex);
+            }
             stream.executor.submit(new FileManager(filesArray,stream,Action.DOWNLOAD));
         }
     }
