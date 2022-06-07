@@ -1,12 +1,12 @@
 package Server.ServerGUI.TreeInterpreter;
 
+
 import javax.swing.*;
 import javax.swing.tree.TreePath;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.ArrayList;
+
 
 public class PopUpTreeListener implements MouseListener {
 
@@ -22,12 +22,26 @@ public class PopUpTreeListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (SwingUtilities.isRightMouseButton(e)) {
             TreePath[] treePath = tree.getSelectionPaths();
-                if (treePath != null && treePath.length==1){
+            assert treePath != null;
+            boolean emptyFolder = checkEmpty(treePath);
+            if (!emptyFolder) {
+                if (treePath.length == 1) {
                     int row = tree.getClosestRowForLocation(e.getX(), e.getY());
                     tree.setSelectionRow(row);
                 }
                 popupMenu.show(e.getComponent(), e.getX(), e.getY());
+            }
         }
+    }
+
+    private boolean checkEmpty(TreePath[] treePath){
+        for (TreePath e:treePath){
+            Object[]elements = e.getPath();
+            if (elements[elements.length-1].toString().equals("[EMPTY FOLDER]")){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
