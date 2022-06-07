@@ -61,12 +61,11 @@ public class TreeGUI {
 
         downloadItem.addActionListener(new MenuItemListener(tree,stream));
 
+
+
         popupMenu.add(downloadItem);
         popupMenu.add(copyItem);
         popupMenu.add(moveItem);
-
-
-
 
         tree.addMouseListener(new PopUpTreeListener(tree, popupMenu));
     }
