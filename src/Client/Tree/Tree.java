@@ -4,58 +4,43 @@ package Client.Tree;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-
 
 
 public class Tree {
     private final File rootPath;
     private final DefaultMutableTreeNode rootNode;
     private final JTree tree;
-    private final ObjectOutputStream output;
 
 
-
-    public Tree(File rootPath, ObjectOutputStream output){
-        this.output=output;
-        this.rootPath=rootPath;
-        this.rootNode=new DefaultMutableTreeNode(rootPath.toString());
-        tree=new JTree(rootNode);
+    public Tree(File rootPath) {
+        this.rootPath = rootPath;
+        this.rootNode = new DefaultMutableTreeNode(rootPath.toString());
+        tree = new JTree(rootNode);
     }
 
-    private void executeFileRecursion(File file,DefaultMutableTreeNode treeNode){
-        File[]arrayFiles= file.listFiles();
-        if (arrayFiles==null)return;
-        else if (arrayFiles.length==0)treeNode.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
-        for (File e:arrayFiles){
-            if (e.isDirectory()){
-                System.out.println(file);
-                DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
-                treeNode.add(fatherNode);
-                executeFileRecursion(e,fatherNode);
-            }
+    protected void executeFileRecursion(File file, DefaultMutableTreeNode treeNode) {
+        File[] arrayFiles = file.listFiles();
+        if (arrayFiles != null) {
+            if (arrayFiles.length == 0) treeNode.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
             else {
-                treeNode.add(new DefaultMutableTreeNode(e.getName()));
-                System.out.println(e.getName());
-
+                for (File e : arrayFiles) {
+                    if (e.isDirectory()) {
+                        System.out.println(file);
+                        DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
+                        treeNode.add(fatherNode);
+                        executeFileRecursion(e, fatherNode);
+                    } else {
+                        treeNode.add(new DefaultMutableTreeNode(e.getName()));
+                        System.out.println(e.getName());
+                    }
+                }
             }
         }
-
     }
 
-    public void start(){
+    public JTree getTree() {
         executeFileRecursion(rootPath, rootNode);
-        sendObject();
-    }
-
-
-    private void sendObject(){
-        try {
-            output.writeObject(tree);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        return tree;
     }
 
 

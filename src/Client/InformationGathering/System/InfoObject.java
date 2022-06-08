@@ -2,16 +2,17 @@ package Client.InformationGathering.System;
 
 import java.io.File;
 import java.io.Serializable;
-import java.util.ArrayList;
+
+import java.util.List;
 
 public class InfoObject implements Serializable {
     private File path;
-    private String command;
-    private ArrayList<File>fileArray;
+    private final String command;
+    private List<File> filesArray;
+    private File destination;
 
-
-    public InfoObject(ArrayList<File>fileArray,String command){
-        this.fileArray=fileArray;
+    public InfoObject(List<File>fileArray,String command){
+        this.filesArray =fileArray;
         this.command=command;
     }
 
@@ -20,8 +21,18 @@ public class InfoObject implements Serializable {
         this.command = command;
     }
 
-    public ArrayList<File> getFileArray() {
-        return fileArray;
+    public InfoObject(List<File>fileArray,File destination,String command){
+        this.filesArray =fileArray;
+        this.destination=destination;
+        this.command=command;
+    }
+
+    public File getDestination() {
+        return destination;
+    }
+
+    public List<File> getFilesArray() {
+        return filesArray;
     }
 
     public File getPath() {

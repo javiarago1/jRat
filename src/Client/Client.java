@@ -8,7 +8,10 @@ import net.lingala.zip4j.ZipFile;
 
 import java.io.*;
 import java.net.*;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Client {
@@ -25,11 +28,9 @@ public class Client {
 
                 System.out.println("Conectado");
 
-
                 ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
                 ObjectInputStream input = new ObjectInputStream(s.getInputStream());
                 DataOutputStream dataOutput = new DataOutputStream(s.getOutputStream());
-
 
                 Object reader;
                 do {
@@ -44,10 +45,10 @@ public class Client {
                         switch (e.getCommand()) {
                             case "TREE" -> {
                                 System.out.println("Path recibido " + e.getPath());
-                                new Tree(e.getPath(), output).start();
+                                output.writeObject(new Tree(e.getPath()).getTree());
                             }
                             case "DOWNLOAD" -> {
-                                ArrayList<File> fileArray = new ArrayList<>(e.getFileArray());
+                                List<File> fileArray = new ArrayList<>(e.getFilesArray());
                                 System.out.println(fileArray);
                                 ZipFile zipFile = new ZipFile("fichero.zip");
                                 for (File a : fileArray) {
@@ -65,6 +66,12 @@ public class Client {
                                 dataOutput.writeInt(length);
                                 dataOutput.write(fileContentBytes);
                                 zipToSend.delete();
+                            }
+                            case "COPY" -> {
+                                ArrayList<File> fileArray=new ArrayList<>(e.getFilesArray());
+                                for (File a:fileArray){
+                                    Files.copy(a.toPath(), e.getDestination().toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                }
                             }
                         }
                     }

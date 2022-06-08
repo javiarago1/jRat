@@ -1,6 +1,7 @@
-package Server.ServerGUI.TreeInterpreter;
+package Server.ServerGUI.TreeInterpreter.PopUp;
 
 import Server.ServerConnections.Streams;
+import Server.ServerGUI.TreeInterpreter.FileManager.DownloadFiles;
 
 import javax.swing.*;
 import javax.swing.tree.TreePath;
@@ -15,8 +16,10 @@ public class MenuItemListener implements ActionListener {
     private final JTree tree;
     private final Streams stream;
     private final ArrayList<File> filesArray = new ArrayList<>();
+    private final Action action;
 
-    public MenuItemListener(JTree tree, Streams stream){
+    public MenuItemListener(JTree tree, Streams stream, Action action){
+        this.action=action;
         this.tree=tree;
         this.stream=stream;
     }
@@ -37,7 +40,13 @@ public class MenuItemListener implements ActionListener {
             for (File ex:filesArray){
                 System.out.println(ex);
             }
-            stream.executor.submit(new FileManager(filesArray,stream,Action.DOWNLOAD));
+            if (action== Action.DOWNLOAD){
+                stream.executor.submit(new DownloadFiles(filesArray,stream));
+            } else if (action== Action.COPY || action== Action.MOVE){
+
+
+            }
+
         }
     }
 }

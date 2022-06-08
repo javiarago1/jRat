@@ -1,4 +1,4 @@
-package Server.ServerGUI.TreeInterpreter;
+package Server.ServerGUI.TreeInterpreter.PopUp;
 
 
 import javax.swing.*;
@@ -13,26 +13,34 @@ public class PopUpTreeListener implements MouseListener {
     private final JTree tree;
     private final JPopupMenu popupMenu;
 
+
+
+
     public PopUpTreeListener(JTree tree,JPopupMenu popupMenu){
         this.tree=tree;
         this.popupMenu=popupMenu;
+
     }
+
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (SwingUtilities.isRightMouseButton(e)) {
-            TreePath[] treePath = tree.getSelectionPaths();
-            assert treePath != null;
-            boolean emptyFolder = checkEmpty(treePath);
-            if (!emptyFolder) {
-                if (treePath.length == 1) {
-                    int row = tree.getClosestRowForLocation(e.getX(), e.getY());
-                    tree.setSelectionRow(row);
+                TreePath[] treePath = tree.getSelectionPaths();
+                assert treePath != null;
+                boolean emptyFolder = checkEmpty(treePath);
+                if (!emptyFolder) {
+                    if (treePath.length == 1) {
+                        int row = tree.getClosestRowForLocation(e.getX(), e.getY());
+                        tree.setSelectionRow(row);
+                    }
+                        popupMenu.show(e.getComponent(), e.getX(), e.getY());
                 }
-                popupMenu.show(e.getComponent(), e.getX(), e.getY());
             }
+
         }
-    }
+
 
     private boolean checkEmpty(TreePath[] treePath){
         for (TreePath e:treePath){
