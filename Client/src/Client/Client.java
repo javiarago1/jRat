@@ -3,7 +3,7 @@ package Client;
 import Client.InformationGathering.System.InfoObject;
 import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
-import Client.Tree.DirectoriesTree;
+import Client.Tree.DirectoryTree;
 import Client.Tree.Tree;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
@@ -51,7 +51,7 @@ public class Client {
                             }
                             case "TREE_DIRECTORIES" -> {
                                 System.out.println("Path recibido " + e.getPath());
-                                output.writeObject(new DirectoriesTree(e.getPath()).getTree());
+                                output.writeObject(new DirectoryTree(e.getPath()).getTree());
                             }
                             case "DOWNLOAD" -> {
                                 List<File> fileArray = new ArrayList<>(e.getFilesArray());
