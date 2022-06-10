@@ -1,15 +1,17 @@
 package Client;
 
 import Client.InformationGathering.System.InfoObject;
-import Client.Tree.Tree;
 import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
+import Client.Tree.DirectoriesTree;
+import Client.Tree.Tree;
 import net.lingala.zip4j.ZipFile;
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
-import java.net.*;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
+import java.net.ConnectException;
+import java.net.Socket;
+import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +49,10 @@ public class Client {
                                 System.out.println("Path recibido " + e.getPath());
                                 output.writeObject(new Tree(e.getPath()).getTree());
                             }
+                            case "TREE_DIRECTORIES" -> {
+                                System.out.println("Path recibido " + e.getPath());
+                                output.writeObject(new DirectoriesTree(e.getPath()).getTree());
+                            }
                             case "DOWNLOAD" -> {
                                 List<File> fileArray = new ArrayList<>(e.getFilesArray());
                                 System.out.println(fileArray);
@@ -68,10 +74,32 @@ public class Client {
                                 zipToSend.delete();
                             }
                             case "COPY" -> {
-                                ArrayList<File> fileArray=new ArrayList<>(e.getFilesArray());
-                                for (File a:fileArray){
-                                    Files.copy(a.toPath(), e.getDestination().toPath(), StandardCopyOption.REPLACE_EXISTING);
+                                List<File> fileArray = new ArrayList<>(e.getFilesArray());
+                                List<File> directories = new ArrayList<>(e.getDirectories());
+                                for (File a : fileArray) {
+                                    for (File i : directories) {
+                                        if (a.isFile()) {
+                                            FileUtils.copyFileToDirectory(a, i);
+                                        } else {
+                                            FileUtils.copyDirectoryToDirectory(a, i);
+                                        }
+                                    }
                                 }
+                                System.out.println("Archivos copiados");
+                            }
+                            case "MOVE" -> {
+                                List<File> filesArray = new ArrayList<>(e.getFilesArray());
+                                System.out.println("Archivos a mover -> " + filesArray);
+                                File destination = e.getDestination();
+                                System.out.println("Destino -> " + destination);
+                                for (File a : filesArray) {
+                                    if (a.isFile()) {
+                                        FileUtils.moveFileToDirectory(a, destination, true);
+                                    } else {
+                                        FileUtils.moveDirectoryToDirectory(a, destination, true);
+                                    }
+                                }
+                                System.out.println("Archivos movidos");
                             }
                         }
                     }
