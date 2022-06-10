@@ -1,16 +1,15 @@
 package Client.Tree;
 
-import Server.ServerGUI.TreeInterpreter.TreeGUI;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.FileFilter;
 
-public class DirectoriesTree extends Tree {
+public class DirectoryTree extends Tree {
 
     private final FileFilter fileFilter;
 
-    public DirectoriesTree(File rootPath) {
+    public DirectoryTree(File rootPath) {
         super(rootPath);
         fileFilter = File::isDirectory;
     }
@@ -30,10 +29,6 @@ public class DirectoriesTree extends Tree {
                 }
             }
         }
-    }
-
-    public static void main(String[] args) {
-        new TreeGUI(new DirectoriesTree(new File("C:\\Users\\JAVIER\\Desktop")).getTree(), "Identificador");
     }
 
 
