@@ -1,10 +1,12 @@
-package Server.ServerGUI;
+package Server.GUI;
 
-import Server.ServerConnections.Server;
-import Server.ServerConnections.Streams;
-import Server.ServerGUI.TableUtils.*;
-import Server.ServerGUI.TableUtils.TableConfig.StateColumnRenderer;
-import Server.ServerGUI.TableUtils.TableConfig.TableModel;
+import Server.Connections.Server;
+import Server.Connections.Streams;
+import Server.GUI.TableUtils.Configuration.TableMenuListener;
+import Server.GUI.TableUtils.FileBrowser.BrowserListener;
+import Server.GUI.TableUtils.Configuration.StateColumnRenderer;
+import Server.GUI.TableUtils.Configuration.TableModel;
+import Server.GUI.TableUtils.SystemInformation.SystemInformationListener;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
@@ -99,10 +101,9 @@ public class jRatGUI {
         connectionTable.setComponentPopupMenu(popupMenu);
 
 
-
-        connectionTable.addMouseListener(new TablePopUpListener(connectionTable,map,browserMenu));
-        browserMenu.addMenuListener(new BrowserMenuListener(connectionTable,browserMenu,map));
-        sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable,map));
+        connectionTable.addMouseListener(new TableMenuListener(connectionTable, map, browserMenu));
+        browserMenu.addMenuListener(new BrowserListener(connectionTable, browserMenu, map));
+        sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable, map));
 
         panel.add(tableScroll);
         frame.add(panel);
@@ -128,6 +129,7 @@ public class jRatGUI {
         }
 
     }
+
 
     public JFrame getFrame() {
         return frame;

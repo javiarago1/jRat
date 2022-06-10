@@ -1,8 +1,6 @@
-package Server.ServerGUI.Progressing;
+package Server.GUI.TableUtils.Bar;
 
-import Server.ServerConnections.Streams;
-import Server.ServerGUI.MainClass;
-import Server.ServerGUI.TreeInterpreter.TreeGUI;
+import Server.GUI.Main;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 
@@ -16,7 +14,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 
-public class ProgressingBar{
+public class ProgressBar {
 
 
     private final JDialog dialog;
@@ -28,9 +26,9 @@ public class ProgressingBar{
     private String identifier;
 
 
-    public ProgressingBar(String identifier) {
-        this.identifier=identifier;
-        dialog= new JDialog(MainClass.gui.getFrame(),"Processing - "+identifier);
+    public ProgressBar(String identifier) {
+        this.identifier = identifier;
+        dialog = new JDialog(Main.gui.getFrame(), "Processing - " + identifier);
         loadStyle();
         addFrame();
         addComponents();
@@ -115,9 +113,8 @@ public class ProgressingBar{
         addProgressionBar();
     }
 
-    public void closeDialog(JTree tree, Streams stream){
+    public void closeDialog() {
         dialog.dispose();
-        new TreeGUI(tree,identifier,stream);
     }
 
     private void addProgressionBar(){

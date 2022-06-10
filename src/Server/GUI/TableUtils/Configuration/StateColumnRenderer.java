@@ -1,4 +1,4 @@
-package Server.ServerGUI.TableUtils.TableConfig;
+package Server.GUI.TableUtils.Configuration;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

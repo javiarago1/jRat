@@ -1,7 +1,6 @@
-package Server.ServerGUI.TableUtils;
+package Server.GUI.TableUtils.Configuration;
 
-import Server.ServerConnections.Streams;
-import Server.ServerGUI.GetSYS;
+import Server.Connections.Streams;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,20 +9,21 @@ import java.awt.event.MouseEvent;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TablePopUpListener extends MouseAdapter {
+public class TableMenuListener extends MouseAdapter {
 
     private final JTable table;
-    private final ConcurrentHashMap<Socket,Streams> map;
+    private final ConcurrentHashMap<Socket, Streams> map;
     private final JMenu browserMenu;
 
 
-    public TablePopUpListener(JTable table, ConcurrentHashMap<Socket,Streams> map,JMenu browserMenu){
-        this.browserMenu=browserMenu;
-        this.table=table;
-        this.map=map;
+    public TableMenuListener(JTable table, ConcurrentHashMap<Socket, Streams> map, JMenu browserMenu) {
+        this.browserMenu = browserMenu;
+        this.table = table;
+        this.map = map;
 
 
     }
+
     @Override
     public void mousePressed(MouseEvent e) {
         Point point = e.getPoint();
@@ -32,7 +32,6 @@ public class TablePopUpListener extends MouseAdapter {
         Streams stream = GetSYS.getStream(map, table);
         assert stream != null;
         browserMenu.setEnabled(!stream.isWorking());
-
     }
 
 

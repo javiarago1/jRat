@@ -1,6 +1,6 @@
-package Server.ServerGUI;
+package Server.GUI.TableUtils.Configuration;
 
-import Server.ServerConnections.Streams;
+import Server.Connections.Streams;
 
 import javax.swing.*;
 import java.net.Socket;

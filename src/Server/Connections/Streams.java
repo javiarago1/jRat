@@ -1,4 +1,4 @@
-package Server.ServerConnections;
+package Server.Connections;
 
 
 import Client.InformationGathering.System.SystemInformation;

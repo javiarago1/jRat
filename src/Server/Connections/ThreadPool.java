@@ -1,4 +1,4 @@
-package Server.ServerConnections;
+package Server.Connections;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -18,9 +18,10 @@ public class ThreadPool extends Thread {
     }
 
     public void run(){
-        while (server == null || dialog == null || executor == null);
+        if (server == null || dialog == null || executor == null)
+            throw new IllegalArgumentException("Invalid arguments!");
         for (int i = 0; i < 4; i++)
-            executor.submit(new SingleShot(server, executor, dialog));
+            executor.submit(new Connection(server, executor, dialog));
     }
 
     public void shutdownNow() {

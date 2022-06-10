@@ -1,7 +1,7 @@
-package Server.ServerGUI.TableUtils;
+package Server.GUI.TableUtils.SystemInformation;
 
-import Server.ServerConnections.Streams;
-import Server.ServerGUI.GetSYS;
+import Server.Connections.Streams;
+import Server.GUI.TableUtils.Configuration.GetSYS;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
