@@ -8,6 +8,7 @@ import javax.swing.event.TreeWillExpandListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
+import java.io.File;
 import java.util.List;
 
 public abstract class Folder implements TreeWillExpandListener {
@@ -18,38 +19,29 @@ public abstract class Folder implements TreeWillExpandListener {
     public Folder(JTree tree, Streams stream) {
         this.tree = tree;
         this.stream = stream;
-
     }
 
     public abstract List<?> requestTree(String value);
 
     @Override
     public void treeWillExpand(TreeExpansionEvent event) {
-
         TreePath treePath = event.getPath();
-        StringBuilder value = new StringBuilder();
-        Object[] elements = treePath.getPath();
-        for (Object element : elements) {
-            value.append(element).append("\\");
-        }
 
-        DefaultMutableTreeNode node = (DefaultMutableTreeNode) treePath.getLastPathComponent();
-        DefaultMutableTreeNode blankNode = (DefaultMutableTreeNode) node.getFirstChild();
+        DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
+        DefaultMutableTreeNode blankNode = (DefaultMutableTreeNode) selectedFolder.getFirstChild();
         DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
         if (blankNode.toString().equals("")) {
             model.removeNodeFromParent(blankNode);
         }
 
-        List<?> receivedList = requestTree(value.toString());
+        File path = TreeMenu.getSelectedPath(treePath);
+        List<?> receivedList = requestTree(path.toString());
 
-        System.out.println(receivedList);
+        System.out.println("Here -> " + receivedList);
 
         for (Object e : receivedList) {
-            node.add((DefaultMutableTreeNode) e);
+            selectedFolder.add((DefaultMutableTreeNode) e);
         }
-
-        System.out.println("Other way" + node);
-
 
     }
 

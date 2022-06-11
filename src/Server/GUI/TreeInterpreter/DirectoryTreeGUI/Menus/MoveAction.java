@@ -24,6 +24,5 @@ public class MoveAction extends TreeMenu {
     @Override
     public void actionPerformed(ActionEvent e) {
         stream.executor.submit(new MoveFiles(filesToMove, getSelectedPath(), stream));
-
     }
 }

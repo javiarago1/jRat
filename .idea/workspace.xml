@@ -9,18 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Cambios generales">
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryFolderRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/FolderRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" afterDir="false" />
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Nueva forma de lectura de árbol">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,6 +59,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Server.GUI.TreeInterpreter.TreeGUI" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Client\src" />
     </key>
@@ -288,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654879663181</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Nueva forma de lectura de árbol">
+      <created>1654941867056</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1654941867056</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -321,7 +323,8 @@
     <MESSAGE value="Creación de dialog para gestión de archivos" />
     <MESSAGE value="Refractor y añadido método para cerrar dialog" />
     <MESSAGE value="Cambios generales" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambios generales" />
+    <MESSAGE value="Nueva forma de lectura de árbol" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nueva forma de lectura de árbol" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
