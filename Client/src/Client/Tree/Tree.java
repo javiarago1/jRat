@@ -1,36 +1,33 @@
 package Client.Tree;
 
 
-import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Tree {
     private final File rootPath;
-    private final DefaultMutableTreeNode rootNode;
-    private final JTree tree;
-
+    private final ArrayList<DefaultMutableTreeNode> nodesArray = new ArrayList<>();
 
     public Tree(File rootPath) {
         this.rootPath = rootPath;
-        this.rootNode = new DefaultMutableTreeNode(rootPath.toString());
-        tree = new JTree(rootNode);
     }
 
-    protected void executeFileRecursion(File file, DefaultMutableTreeNode treeNode) {
+    protected void readTree(File file) {
         File[] arrayFiles = file.listFiles();
         if (arrayFiles != null) {
-            if (arrayFiles.length == 0) treeNode.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
+            if (arrayFiles.length == 0) nodesArray.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
             else {
                 for (File e : arrayFiles) {
                     if (e.isDirectory()) {
                         System.out.println(file);
                         DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
-                        treeNode.add(fatherNode);
-                        executeFileRecursion(e, fatherNode);
+                        fatherNode.add(new DefaultMutableTreeNode(""));
+                        nodesArray.add(fatherNode);
                     } else {
-                        treeNode.add(new DefaultMutableTreeNode(e.getName()));
+                        nodesArray.add(new DefaultMutableTreeNode(e.getName()));
                         System.out.println(e.getName());
                     }
                 }
@@ -38,10 +35,12 @@ public class Tree {
         }
     }
 
-    public JTree getTree() {
-        executeFileRecursion(rootPath, rootNode);
-        return tree;
+    public List<DefaultMutableTreeNode> getTree() {
+        readTree(rootPath);
+        return nodesArray;
     }
 
-
+    public ArrayList<DefaultMutableTreeNode> getNodesArray() {
+        return nodesArray;
+    }
 }

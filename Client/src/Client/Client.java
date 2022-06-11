@@ -22,6 +22,7 @@ public class Client {
 
     public static void main(String[] args) {
 
+
         while (true) {
             try {
                 System.out.println("Conectando...");

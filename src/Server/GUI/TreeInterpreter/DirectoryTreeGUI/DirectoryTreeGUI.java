@@ -2,6 +2,7 @@ package Server.GUI.TreeInterpreter.DirectoryTreeGUI;
 
 
 import Server.Connections.Streams;
+
 import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import Server.GUI.TreeInterpreter.TreeGUI.TreeListener;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.Menus.MoveAction;
@@ -16,10 +17,11 @@ import java.util.List;
 
 public class DirectoryTreeGUI extends TreeGUI {
 
-    public DirectoryTreeGUI(JTree tree, Streams stream, JDialog dialog, List<File> filesToCopy, Action action) {
-        super(tree, stream, dialog, filesToCopy, action);
-        tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
+    public DirectoryTreeGUI(File rootName, Streams stream, JDialog dialog, List<File> filesToCopy, Action action) {
+        super(rootName, stream, dialog, filesToCopy, action);
+        getTree().getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
     }
+
 
     @Override
     protected void createPopUpMenu() {

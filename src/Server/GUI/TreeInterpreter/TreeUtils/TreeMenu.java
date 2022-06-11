@@ -21,7 +21,6 @@ public abstract class TreeMenu implements ActionListener, MenuListener {
 
     protected File getSelectedPath() {
         if (tree.getSelectionPath() != null) {
-            filesArray.clear();
             TreePath treePath = tree.getSelectionPath();
             StringBuilder value = new StringBuilder();
             Object[] elements = treePath.getPath();

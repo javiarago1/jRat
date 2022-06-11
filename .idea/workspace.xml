@@ -9,52 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Refractor de nombre de clase Main">
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/PasteAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/CopyFiles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/MoveFiles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/CopyMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/DownloadAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/MoveMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jRat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jRat.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/InformationGathering/System/InfoObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/InfoObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/InformationGathering/System/ReadJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/ReadJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/InformationGathering/System/SystemInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/SystemInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/InformationGathering/System/SystemNetworkInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/SystemNetworkInformation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Tree/DirectoriesTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoriesTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerConnections/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Connections/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerConnections/SingleShot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Connections/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerConnections/Streams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Connections/Streams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerConnections/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/Connections/ThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/Connections.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/GetSYS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/GetSYS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/InformationGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/MainClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/Progressing/ProgressingBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Bar/ProgressBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TableUtils/DiskMenuCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TableUtils/SystemInformationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/SystemInformation/SystemInformationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TableUtils/TableConfig/StateColumnRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/StateColumnRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TableUtils/TableConfig/TableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/TableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TableUtils/TablePopUpListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TreeInterpreter/FileManager/CopyFiles.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TreeInterpreter/FileManager/DownloadFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/DownloadFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TreeInterpreter/PopUp/MenuItemListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TreeInterpreter/PopUp/PopUpTreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/TreeInterpreter/TreeGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/ServerGUI/jRatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/jRatGUI.java" afterDir="false" />
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Cambios generales">
+      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryFolderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/FolderRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +71,7 @@
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Client\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client (1)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="Client" />
@@ -172,8 +139,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Client (1)" />
-        <item itemvalue="Application.MainClass" />
         <item itemvalue="Application.testing" />
         <item itemvalue="Application.Client" />
       </list>
@@ -251,7 +218,77 @@
       <option name="project" value="LOCAL" />
       <updated>1654879184463</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Clase eliminada">
+      <created>1654879201595</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879201595</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Copiado de archivos, envío de socket a cliente">
+      <created>1654879234190</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879234190</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Refractor de localización">
+      <created>1654879255200</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879255200</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Creación de menu para copiar archivos a directorio">
+      <created>1654879336396</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879336396</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Refractor nombre de arbol de directorios">
+      <created>1654879458666</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879458666</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Refractor nombre de arbol de directorios">
+      <created>1654879467840</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879467840</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Creación de menu de discos e inicialización de subdialog">
+      <created>1654879524544</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879524544</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Creación de dialog para gestión de archivos">
+      <created>1654879547138</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879547138</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Refractor y añadido método para cerrar dialog">
+      <created>1654879617214</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879617214</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Cambios generales">
+      <created>1654879663181</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1654879663181</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,7 +312,16 @@
     <MESSAGE value="librerias añadidas" />
     <MESSAGE value="liberia IO añadida" />
     <MESSAGE value="Refractor de nombre de clase Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refractor de nombre de clase Main" />
+    <MESSAGE value="Clase eliminada" />
+    <MESSAGE value="Copiado de archivos, envío de socket a cliente" />
+    <MESSAGE value="Refractor de localización" />
+    <MESSAGE value="Creación de menu para copiar archivos a directorio" />
+    <MESSAGE value="Refractor nombre de arbol de directorios" />
+    <MESSAGE value="Creación de menu de discos e inicialización de subdialog" />
+    <MESSAGE value="Creación de dialog para gestión de archivos" />
+    <MESSAGE value="Refractor y añadido método para cerrar dialog" />
+    <MESSAGE value="Cambios generales" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios generales" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

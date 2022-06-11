@@ -4,6 +4,7 @@ package Client.Tree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.FileFilter;
+import java.util.Objects;
 
 public class DirectoryTree extends Tree {
 
@@ -16,16 +17,16 @@ public class DirectoryTree extends Tree {
 
 
     @Override
-    protected void executeFileRecursion(File file, DefaultMutableTreeNode treeNode) {
+    protected void readTree(File file) {
         File[] arrayFiles = file.listFiles(fileFilter);
         if (arrayFiles != null) {
-            if (arrayFiles.length == 0) treeNode.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
+            if (arrayFiles.length == 0) getNodesArray().add(new DefaultMutableTreeNode("[NO MORE FOLDERS]"));
             else {
                 for (File e : arrayFiles) {
                     System.out.println(file);
                     DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
-                    treeNode.add(fatherNode);
-                    executeFileRecursion(e, fatherNode);
+                    fatherNode.add(new DefaultMutableTreeNode(""));
+                    getNodesArray().add(fatherNode);
                 }
             }
         }

@@ -1,6 +1,7 @@
 package Server.GUI.TreeInterpreter.TreeGUI;
 
 import Server.Connections.Streams;
+import Server.GUI.TreeInterpreter.DirectoryTreeGUI.DirectoryFolderRequest;
 import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.CopyMenu;
 
@@ -9,6 +10,7 @@ import Server.GUI.TreeInterpreter.TreeGUI.Menus.MoveMenu;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
+import javax.swing.tree.*;
 
 import java.awt.*;
 import java.io.File;
@@ -24,11 +26,15 @@ public class TreeGUI {
     private final Streams stream;
     private List<File> filesArray;
     private Action action;
+    private final DefaultMutableTreeNode rootNode;
 
 
-    public TreeGUI(JTree tree, Streams stream, Window frame) {
+    public TreeGUI(File rootName, Streams stream, Window frame) {
+        this.rootNode = new DefaultMutableTreeNode(rootName);
         this.stream = stream;
-        this.tree = tree;
+        this.tree = new JTree(rootNode);
+        this.rootNode.add(new DefaultMutableTreeNode(""));
+        this.tree.addTreeWillExpandListener(new FolderRequest(tree, stream));
         this.dialog = new JDialog(frame, "Tree Directory - " + stream.getIdentifier());
         loadStyle();
         addFrame();
@@ -37,9 +43,12 @@ public class TreeGUI {
 
     }
 
-    public TreeGUI(JTree tree, Streams stream, Window frame, List<File> filesArray, Action action) {
+    public TreeGUI(File rootName, Streams stream, Window frame, List<File> filesArray, Action action) {
+        this.rootNode = new DefaultMutableTreeNode(rootName);
         this.stream = stream;
-        this.tree = tree;
+        this.tree = new JTree(rootNode);
+        this.rootNode.add(new DefaultMutableTreeNode(""));
+        this.tree.addTreeWillExpandListener(new DirectoryFolderRequest(tree, stream));
         this.dialog = new JDialog(frame, action + " Directory - " + stream.getIdentifier());
         this.filesArray = new ArrayList<>(filesArray);
         this.action = action;
@@ -48,6 +57,7 @@ public class TreeGUI {
         addComponents();
         startDialog();
     }
+
 
     public void startDialog() {
         dialog.setVisible(true);

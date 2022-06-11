@@ -9,13 +9,16 @@ import Server.GUI.TreeInterpreter.TreeGUI.TreeGUI;
 
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class DiskMenu implements Runnable {
@@ -40,32 +43,7 @@ public class DiskMenu implements Runnable {
 
 
     protected ActionListener generateActionListener(String path) {
-        return e -> {
-            ProgressBar progressingGUI = new ProgressBar(stream.getIdentifier());
-            SwingWorker<Void, Void> swingWorker = new SwingWorker<>() {
-                JTree tempTree;
-
-                @Override
-                protected Void doInBackground() {
-                    stream.setWorking(true);
-                    System.out.println(Thread.currentThread().getName());
-                    progressingGUI.executeProgression();
-                    System.out.println(path);
-                    stream.sendObject(new InfoObject(new File(path), "TREE"));
-                    tempTree = (JTree) stream.readObject();
-                    System.out.println("Object -> " + tempTree);
-                    return null;
-                }
-
-                @Override
-                protected void done() {
-                    stream.setWorking(false);
-                    progressingGUI.closeDialog();
-                    new TreeGUI(tempTree, stream, Main.gui.getFrame());
-                }
-            };
-            stream.executor.submit(swingWorker);
-        };
+        return e -> new TreeGUI(new File(path), stream, Main.gui.getFrame());
     }
 
     private void createFileBrowserOptions() {
