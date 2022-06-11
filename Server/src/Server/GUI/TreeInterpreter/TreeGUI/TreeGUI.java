@@ -31,7 +31,7 @@ public class TreeGUI {
         this.rootNode = new DefaultMutableTreeNode(rootName);
         this.stream = stream;
         this.tree = new JTree(rootNode);
-        this.rootNode.add(new DefaultMutableTreeNode(""));
+        this.rootNode.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
         this.tree.addTreeWillExpandListener(new FolderRequest(tree, stream));
         this.dialog = new JDialog(frame, "Tree Directory - " + stream.getIdentifier());
         loadStyle();
@@ -45,7 +45,7 @@ public class TreeGUI {
         this.rootNode = new DefaultMutableTreeNode(rootName);
         this.stream = stream;
         this.tree = new JTree(rootNode);
-        this.rootNode.add(new DefaultMutableTreeNode(""));
+        this.rootNode.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
         this.tree.addTreeWillExpandListener(new DirectoryFolderRequest(tree, stream));
         this.dialog = new JDialog(frame, action + " Directory - " + stream.getIdentifier());
         this.filesArray = new ArrayList<>(filesArray);

@@ -27,12 +27,12 @@ public class Tree {
         File[] directoryArray = file.listFiles(fileFilter);
         if (filesArray != null) {
             if (Objects.requireNonNull(file.listFiles()).length == 0)
-                nodesArray.add(new DefaultMutableTreeNode("[EMPTY FOLDER]"));
+                nodesArray.add(new DefaultMutableTreeNode("<EMPTY FOLDER>"));
             else {
                 for (File e : filesArray) {
                     System.out.println(file);
                     DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
-                    fatherNode.add(new DefaultMutableTreeNode(""));
+                    fatherNode.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
                     nodesArray.add(fatherNode);
                 }
             }

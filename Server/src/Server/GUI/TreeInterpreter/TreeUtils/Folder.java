@@ -30,24 +30,40 @@ public abstract class Folder implements TreeWillExpandListener {
         DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
         DefaultMutableTreeNode blankNode = (DefaultMutableTreeNode) selectedFolder.getFirstChild();
         DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-        if (blankNode.toString().equals("")) {
-            model.removeNodeFromParent(blankNode);
-        }
 
-        File path = TreeMenu.getSelectedPath(treePath);
-        List<?> receivedList = requestTree(path.toString());
 
-        System.out.println("Here -> " + receivedList);
+        SwingWorker<Void, Void> swingWorker = new SwingWorker<>() {
+            List<?> receivedList;
 
-        for (Object e : receivedList) {
-            selectedFolder.add((DefaultMutableTreeNode) e);
-        }
+            @Override
+            protected Void doInBackground() {
+                File path = TreeMenu.getSelectedPath(treePath);
+                receivedList = requestTree(path.toString());
+                return null;
+            }
+
+            @Override
+            protected void done() {
+                for (Object e : receivedList) {
+                    selectedFolder.add((DefaultMutableTreeNode) e);
+                }
+                if (blankNode.toString().equals("<LOADING DIRECTORY>")) {
+                    model.removeNodeFromParent(blankNode);
+                }
+                model.reload(selectedFolder);
+                System.out.println("Cargando archivos " + receivedList);
+            }
+        };
+        stream.executor.submit(swingWorker);
 
     }
 
     @Override
     public void treeWillCollapse(TreeExpansionEvent event) {
-
+        TreePath treePath = event.getPath();
+        DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
+        selectedFolder.removeAllChildren();
+        selectedFolder.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
     }
 
     public Streams getStream() {

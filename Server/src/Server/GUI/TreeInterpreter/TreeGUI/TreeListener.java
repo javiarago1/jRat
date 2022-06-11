@@ -39,7 +39,8 @@ public class TreeListener implements MouseListener {
     protected boolean checkEmpty(TreePath[] treePath) {
         for (TreePath e : treePath) {
             Object[] elements = e.getPath();
-            if (elements[elements.length - 1].toString().equals("[EMPTY FOLDER]") || elements[elements.length - 1].toString().equals("[NO MORE FOLDERS]")) {
+            String element = elements[elements.length - 1].toString();
+            if (element.equals("<EMPTY FOLDER>") || element.equals("<NO MORE FOLDERS>") || element.equals("<LOADING DIRECTORY>")) {
                 return true;
             }
         }
