@@ -12,19 +12,17 @@ import javax.swing.event.MenuEvent;
 public class MoveMenu extends TreeMenu {
     private final JMenu moveMenu;
     private final JDialog dialog;
-    private final Streams stream;
 
     public MoveMenu(JTree tree, Streams stream, JDialog dialog, JMenu moveMenu) {
-        super(tree);
+        super(tree, stream);
         this.dialog = dialog;
-        this.stream = stream;
         this.moveMenu = moveMenu;
     }
 
     @Override
     public void menuSelected(MenuEvent e) {
         moveMenu.removeAll();
-        stream.executor.submit(new DirectoryDiskMenu(moveMenu, stream, dialog, getSelectedPaths(), Action.MOVE));
+        getStream().executor.submit(new DirectoryDiskMenu(moveMenu, getStream(), dialog, getSelectedPaths(), Action.MOVE));
     }
 
 }

@@ -13,16 +13,14 @@ import java.util.List;
 public class MoveAction extends TreeMenu {
 
     private final List<File> filesToMove;
-    private final Streams stream;
 
     public MoveAction(JTree tree, Streams stream, List<File> filesToMove) {
-        super(tree);
-        this.stream = stream;
+        super(tree, stream);
         this.filesToMove = new ArrayList<>(filesToMove);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        stream.executor.submit(new MoveFiles(filesToMove, getSelectedPath(), stream));
+        getStream().executor.submit(new MoveFiles(filesToMove, getSelectedPath(), getStream()));
     }
 }

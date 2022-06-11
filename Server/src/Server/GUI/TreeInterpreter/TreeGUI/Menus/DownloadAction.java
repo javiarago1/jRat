@@ -10,17 +10,15 @@ import java.awt.event.ActionEvent;
 
 public class DownloadAction extends TreeMenu {
 
-    private final Streams stream;
 
     public DownloadAction(JTree tree, Streams stream) {
-        super(tree);
-        this.stream = stream;
-    }
+        super(tree, stream);
 
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        stream.executor.submit(new DownloadFiles(getSelectedPaths(), stream));
+        getStream().executor.submit(new DownloadFiles(getSelectedPaths(), getStream()));
     }
 
 

@@ -12,13 +12,11 @@ import javax.swing.event.MenuEvent;
 
 public class CopyMenu extends TreeMenu {
 
-    private final Streams stream;
     private final JDialog dialog;
     private final JMenu copyItem;
 
     public CopyMenu(JTree tree, Streams stream, JDialog dialog, JMenu copyItem) {
-        super(tree);
-        this.stream = stream;
+        super(tree, stream);
         this.dialog = dialog;
         this.copyItem = copyItem;
     }
@@ -26,7 +24,7 @@ public class CopyMenu extends TreeMenu {
     @Override
     public void menuSelected(MenuEvent e) {
         copyItem.removeAll();
-        stream.executor.submit(new DirectoryDiskMenu(copyItem, stream, dialog, getSelectedPaths(), Action.COPY));
+        getStream().executor.submit(new DirectoryDiskMenu(copyItem, getStream(), dialog, getSelectedPaths(), Action.COPY));
     }
 
 

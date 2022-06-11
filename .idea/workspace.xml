@@ -9,11 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Refractor">
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Cambios en orden de JTree">
+      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/UploadAction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/PasteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/PasteAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/CopyMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/CopyMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/DownloadAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/DownloadAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/MoveMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/MoveMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="UML Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -72,7 +76,7 @@
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Client (1)">
     <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="Client" />
@@ -153,8 +157,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Client (1)" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.testing" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Client" />
@@ -324,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654944745410</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Cambios en orden de JTree">
+      <created>1654957429310</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1654957429310</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +370,8 @@
     <MESSAGE value="Cambios generales" />
     <MESSAGE value="Nueva forma de lectura de árbol" />
     <MESSAGE value="Refractor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refractor" />
+    <MESSAGE value="Cambios en orden de JTree" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cambios en orden de JTree" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

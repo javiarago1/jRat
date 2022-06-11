@@ -1,5 +1,7 @@
 package Server.GUI.TreeInterpreter.TreeUtils;
 
+import Server.Connections.Streams;
+
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
@@ -14,9 +16,11 @@ public abstract class TreeMenu implements ActionListener, MenuListener {
 
     private final JTree tree;
     private final List<File> filesArray = new ArrayList<>();
+    private final Streams stream;
 
-    public TreeMenu(JTree tree) {
+    public TreeMenu(JTree tree, Streams stream) {
         this.tree = tree;
+        this.stream = stream;
     }
 
 
@@ -83,5 +87,7 @@ public abstract class TreeMenu implements ActionListener, MenuListener {
 
     }
 
-
+    public Streams getStream() {
+        return stream;
+    }
 }

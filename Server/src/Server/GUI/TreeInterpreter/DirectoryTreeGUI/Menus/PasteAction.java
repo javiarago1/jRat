@@ -13,16 +13,14 @@ import java.util.List;
 public class PasteAction extends TreeMenu {
 
     private final List<File> filesToCopy;
-    private final Streams stream;
 
     public PasteAction(JTree tree, Streams stream, List<File> filesToCopy) {
-        super(tree);
-        this.stream = stream;
+        super(tree, stream);
         this.filesToCopy = new ArrayList<>(filesToCopy);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        stream.executor.submit(new CopyFiles(filesToCopy, getSelectedPaths(), stream));
+        getStream().executor.submit(new CopyFiles(filesToCopy, getSelectedPaths(), getStream()));
     }
 }
