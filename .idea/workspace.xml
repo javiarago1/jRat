@@ -10,41 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Refractor">
-      <change afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Connections/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Connections/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Connections/Streams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/Streams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/Connections/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/ThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Bar/ProgressBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Bar/ProgressBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/GetSYS.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/GetSYS.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/StateColumnRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/StateColumnRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/Configuration/TableModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/BrowserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/FileBrowser/BrowserListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/FileBrowser/DiskMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TableUtils/SystemInformation/SystemInformationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/SystemInformation/SystemInformationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryDiskMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryFolderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryFolderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/DirectoryTreeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/MoveAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/PasteAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/DirectoryTreeGUI/Menus/PasteAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/CopyFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/FileManager/CopyFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/DownloadFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/FileManager/DownloadFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/FileManager/MoveFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/FileManager/MoveFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/FolderRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/FolderRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/CopyMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/CopyMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/DownloadAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/DownloadAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/MoveMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/MoveMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/TreeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/GUI/jRatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/jRatGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +25,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="UML Class" />
       </list>
     </option>
   </component>
@@ -76,6 +46,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -184,8 +155,8 @@
       <list>
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Client (1)" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.testing" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Client" />
       </list>
     </recent_temporary>
@@ -346,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654943975890</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Refractor">
+      <created>1654944745410</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1654944745410</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

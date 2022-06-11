@@ -4,7 +4,6 @@ package Client.Tree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.FileFilter;
-import java.util.Objects;
 
 public class DirectoryTree extends Tree {
 
@@ -18,11 +17,11 @@ public class DirectoryTree extends Tree {
 
     @Override
     protected void readTree(File file) {
-        File[] arrayFiles = file.listFiles(fileFilter);
-        if (arrayFiles != null) {
-            if (arrayFiles.length == 0) getNodesArray().add(new DefaultMutableTreeNode("[NO MORE FOLDERS]"));
+        File[] directoriesArray = file.listFiles(fileFilter);
+        if (directoriesArray != null) {
+            if (directoriesArray.length == 0) getNodesArray().add(new DefaultMutableTreeNode("[NO MORE FOLDERS]"));
             else {
-                for (File e : arrayFiles) {
+                for (File e : directoriesArray) {
                     System.out.println(file);
                     DefaultMutableTreeNode fatherNode = new DefaultMutableTreeNode(e.getName());
                     fatherNode.add(new DefaultMutableTreeNode(""));
@@ -30,6 +29,7 @@ public class DirectoryTree extends Tree {
                 }
             }
         }
+
     }
 
 
