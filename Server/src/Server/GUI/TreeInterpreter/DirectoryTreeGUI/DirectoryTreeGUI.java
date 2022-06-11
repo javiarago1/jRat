@@ -2,12 +2,11 @@ package Server.GUI.TreeInterpreter.DirectoryTreeGUI;
 
 
 import Server.Connections.Streams;
-
-import Server.GUI.TreeInterpreter.TreeUtils.Action;
-import Server.GUI.TreeInterpreter.TreeGUI.TreeListener;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.Menus.MoveAction;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.Menus.PasteAction;
 import Server.GUI.TreeInterpreter.TreeGUI.TreeGUI;
+import Server.GUI.TreeInterpreter.TreeGUI.TreeListener;
+import Server.GUI.TreeInterpreter.TreeUtils.Action;
 
 import javax.swing.*;
 import javax.swing.tree.TreeSelectionModel;

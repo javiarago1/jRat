@@ -2,10 +2,10 @@ package Server.GUI;
 
 import Server.Connections.Server;
 import Server.Connections.Streams;
-import Server.GUI.TableUtils.Configuration.TableMenuListener;
-import Server.GUI.TableUtils.FileBrowser.BrowserListener;
 import Server.GUI.TableUtils.Configuration.StateColumnRenderer;
+import Server.GUI.TableUtils.Configuration.TableMenuListener;
 import Server.GUI.TableUtils.Configuration.TableModel;
+import Server.GUI.TableUtils.FileBrowser.BrowserListener;
 import Server.GUI.TableUtils.SystemInformation.SystemInformationListener;
 import com.formdev.flatlaf.FlatDarkLaf;
 

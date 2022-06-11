@@ -1,24 +1,16 @@
 package Server.GUI.TableUtils.FileBrowser;
 
 
-import Client.InformationGathering.System.InfoObject;
 import Server.Connections.Streams;
 import Server.GUI.Main;
-import Server.GUI.TableUtils.Bar.ProgressBar;
 import Server.GUI.TreeInterpreter.TreeGUI.TreeGUI;
 
-
 import javax.swing.*;
-import javax.swing.tree.DefaultMutableTreeNode;
-
-
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 
 public class DiskMenu implements Runnable {

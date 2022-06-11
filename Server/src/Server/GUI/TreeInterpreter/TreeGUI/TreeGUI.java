@@ -2,16 +2,14 @@ package Server.GUI.TreeInterpreter.TreeGUI;
 
 import Server.Connections.Streams;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.DirectoryFolderRequest;
-import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.CopyMenu;
-
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.DownloadAction;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.MoveMenu;
+import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
 import javax.swing.*;
-import javax.swing.tree.*;
-
+import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;

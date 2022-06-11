@@ -3,10 +3,7 @@ package Server.GUI.TableUtils.Bar;
 import Server.GUI.Main;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
-
 import javax.swing.*;
-
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

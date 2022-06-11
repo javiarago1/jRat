@@ -1,15 +1,8 @@
 package Server.GUI.TreeInterpreter.DirectoryTreeGUI;
 
-import Client.InformationGathering.System.InfoObject;
-
 import Server.Connections.Streams;
-
-import Server.GUI.Main;
-import Server.GUI.TableUtils.Bar.ProgressBar;
 import Server.GUI.TableUtils.FileBrowser.DiskMenu;
-import Server.GUI.TreeInterpreter.TreeGUI.TreeGUI;
 import Server.GUI.TreeInterpreter.TreeUtils.Action;
-
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

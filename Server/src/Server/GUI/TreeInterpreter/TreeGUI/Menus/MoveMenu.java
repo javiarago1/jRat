@@ -1,8 +1,8 @@
 package Server.GUI.TreeInterpreter.TreeGUI.Menus;
 
 import Server.Connections.Streams;
-import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.DirectoryDiskMenu;
+import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import Server.GUI.TreeInterpreter.TreeUtils.TreeMenu;
 
 import javax.swing.*;
