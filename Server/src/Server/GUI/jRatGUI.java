@@ -101,7 +101,7 @@ public class jRatGUI {
         connectionTable.setComponentPopupMenu(popupMenu);
 
 
-        connectionTable.addMouseListener(new TableMenuListener(connectionTable, map, browserMenu));
+        connectionTable.addMouseListener(new TableMenuListener(connectionTable));
         browserMenu.addMenuListener(new BrowserListener(connectionTable, browserMenu, map));
         sysInfoMenu.addActionListener(new SystemInformationListener(connectionTable, map));
 
