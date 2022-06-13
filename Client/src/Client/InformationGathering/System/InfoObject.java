@@ -10,6 +10,7 @@ public class InfoObject implements Serializable {
     private List<File> filesArray;
     private List<File> directories;
 
+
     public InfoObject(List<File> fileArray, String command) {
         this.filesArray = fileArray;
         this.command = command;
