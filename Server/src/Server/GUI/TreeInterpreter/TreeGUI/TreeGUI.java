@@ -2,6 +2,8 @@ package Server.GUI.TreeInterpreter.TreeGUI;
 
 import Server.Connections.Streams;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.DirectoryFolderRequest;
+import Server.GUI.TreeInterpreter.TreeGUI.Menus.Chooser.UploadFileAction;
+import Server.GUI.TreeInterpreter.TreeGUI.Menus.Chooser.UploadFolderAction;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.CopyMenu;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.DownloadAction;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.MoveMenu;
@@ -87,13 +89,23 @@ public class TreeGUI {
         JMenuItem downloadItem = new JMenuItem("Download");
         JMenu copyMenu = new JMenu("Copy to");
         JMenu moveMenu = new JMenu("Move to");
+        JMenu uploadMenu = new JMenu("Upload");
+        JMenuItem uploadFolderItem = new JMenuItem("Folder");
+        JMenuItem uploadFileItem = new JMenuItem("File");
+        uploadMenu.add(uploadFileItem);
+        uploadMenu.add(uploadFolderItem);
+
         popupMenu.add(downloadItem);
         popupMenu.add(copyMenu);
         popupMenu.add(moveMenu);
+        popupMenu.add(uploadMenu);
 
         downloadItem.addActionListener(new DownloadAction(tree, stream));
         copyMenu.addMenuListener(new CopyMenu(tree, stream, dialog, copyMenu));
         moveMenu.addMenuListener(new MoveMenu(tree, stream, dialog, moveMenu));
+
+        uploadFileItem.addActionListener(new UploadFileAction(tree, stream, dialog));
+        uploadFolderItem.addActionListener(new UploadFolderAction(tree, stream, dialog));
 
         tree.addMouseListener(new TreeListener(tree, popupMenu));
 
@@ -108,6 +120,7 @@ public class TreeGUI {
         menu_bar.add(menu);
         dialog.setJMenuBar(menu_bar);
     }
+
 
     public JTree getTree() {
         return tree;
@@ -128,4 +141,6 @@ public class TreeGUI {
     public Action getAction() {
         return action;
     }
+
+
 }
