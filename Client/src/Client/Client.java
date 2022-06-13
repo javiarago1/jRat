@@ -34,6 +34,7 @@ public class Client {
                 ObjectOutputStream output = new ObjectOutputStream(s.getOutputStream());
                 ObjectInputStream input = new ObjectInputStream(s.getInputStream());
                 DataOutputStream dataOutput = new DataOutputStream(s.getOutputStream());
+                DataInputStream dataInput = new DataInputStream(s.getInputStream());
 
                 Object reader;
                 do {
@@ -72,7 +73,33 @@ public class Client {
                                 fileInputStream.close();
                                 dataOutput.writeInt(length);
                                 dataOutput.write(fileContentBytes);
-                                zipToSend.delete();
+                                FileUtils.deleteQuietly(zipToSend);
+                            }
+                            case "UPLOAD" -> {
+                                List<File> directories = new ArrayList<>(e.getFilesArray());
+                                int length = 0;
+                                try {
+                                    length = dataInput.readInt();
+                                } catch (IOException er) {
+                                    er.printStackTrace();
+                                }
+
+                                byte[] byteContent;
+                                if (length > 0) {
+                                    byteContent = new byte[length];
+                                    try (FileOutputStream fileToCreate = new FileOutputStream("temp.zip")) {
+                                        dataInput.readFully(byteContent, 0, length);
+                                        fileToCreate.write(byteContent);
+                                        ZipFile tempZip = new ZipFile("temp.zip");
+                                        for (File a : directories) {
+                                            tempZip.extractAll(a.toString());
+                                        }
+                                        FileUtils.deleteQuietly(tempZip.getFile());
+                                    } catch (IOException er) {
+                                        er.printStackTrace();
+
+                                    }
+                                }
                             }
                             case "COPY" -> {
                                 List<File> fileArray = new ArrayList<>(e.getFilesArray());
