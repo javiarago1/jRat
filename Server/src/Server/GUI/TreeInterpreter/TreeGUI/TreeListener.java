@@ -2,6 +2,7 @@ package Server.GUI.TreeInterpreter.TreeGUI;
 
 
 import javax.swing.*;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -22,29 +23,41 @@ public class TreeListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (SwingUtilities.isRightMouseButton(e) && tree.getSelectionPaths() != null) {
             TreePath[] treePath = tree.getSelectionPaths();
+
             assert treePath != null;
-            boolean emptyFolder = checkEmpty(treePath);
-            if (!emptyFolder) {
+            if (checkInfo(treePath)) {
                 if (treePath.length == 1) {
                     int row = tree.getClosestRowForLocation(e.getX(), e.getY());
                     tree.setSelectionRow(row);
                 }
+                popupMenu.getComponent(3).setVisible(allFolders(treePath));
                 popupMenu.show(e.getComponent(), e.getX(), e.getY());
             }
-            }
-
         }
 
+    }
 
-    protected boolean checkEmpty(TreePath[] treePath) {
+
+    protected boolean allFolders(TreePath[] treePath) {
+        for (TreePath e : treePath) {
+            DefaultMutableTreeNode node = (DefaultMutableTreeNode) e.getLastPathComponent();
+            if (node.isLeaf()) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    protected boolean checkInfo(TreePath[] treePath) {
         for (TreePath e : treePath) {
             Object[] elements = e.getPath();
             String element = elements[elements.length - 1].toString();
             if (element.equals("<EMPTY FOLDER>") || element.equals("<NO MORE FOLDERS>") || element.equals("<LOADING DIRECTORY>")) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -71,5 +84,7 @@ public class TreeListener implements MouseListener {
         return tree;
     }
 
-
+    public JPopupMenu getPopupMenu() {
+        return popupMenu;
+    }
 }
