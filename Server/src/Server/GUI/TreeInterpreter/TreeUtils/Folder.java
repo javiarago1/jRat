@@ -25,15 +25,11 @@ public abstract class Folder implements TreeWillExpandListener {
 
     @Override
     public void treeWillExpand(TreeExpansionEvent event) {
-        TreePath treePath = event.getPath();
-
-        DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
-        DefaultMutableTreeNode blankNode = (DefaultMutableTreeNode) selectedFolder.getFirstChild();
-        DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
-
-
-        SwingWorker<Void, Void> swingWorker = new SwingWorker<>() {
-            List<?> receivedList;
+        SwingWorker<Void, Void> requestWorker = new SwingWorker<>() {
+            private final TreePath treePath = event.getPath();
+            private final DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
+            private final DefaultTreeModel model = (DefaultTreeModel) tree.getModel();
+            private List<?> receivedList;
 
             @Override
             protected Void doInBackground() {
@@ -44,26 +40,27 @@ public abstract class Folder implements TreeWillExpandListener {
 
             @Override
             protected void done() {
+                selectedFolder.removeAllChildren();
+                selectedFolder.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
+                model.reload(selectedFolder);
+                DefaultMutableTreeNode blankNode = (DefaultMutableTreeNode) selectedFolder.getFirstChild();
                 for (Object e : receivedList) {
-                    selectedFolder.add((DefaultMutableTreeNode) e);
+                    model.insertNodeInto((DefaultMutableTreeNode) e, selectedFolder, selectedFolder.getChildCount());
                 }
                 if (blankNode.toString().equals("<LOADING DIRECTORY>")) {
                     model.removeNodeFromParent(blankNode);
                 }
-                model.reload(selectedFolder);
+
                 System.out.println("Cargando archivos " + receivedList);
             }
         };
-        stream.executor.submit(swingWorker);
+        stream.executor.submit(requestWorker);
 
     }
 
     @Override
     public void treeWillCollapse(TreeExpansionEvent event) {
-        TreePath treePath = event.getPath();
-        DefaultMutableTreeNode selectedFolder = (DefaultMutableTreeNode) treePath.getLastPathComponent();
-        selectedFolder.removeAllChildren();
-        selectedFolder.add(new DefaultMutableTreeNode("<LOADING DIRECTORY>"));
+
     }
 
     public Streams getStream() {
