@@ -9,20 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="refractor: reformateo">
-      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/FileManager/UploadFiles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/Chooser/UploadFileAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/Chooser/UploadFolderAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Upload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/Connections/Streams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/Streams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/UploadAction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/jRatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/jRatGUI.java" afterDir="false" />
-    </list>
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="ignore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -388,7 +375,84 @@
       <option name="project" value="LOCAL" />
       <updated>1655119251896</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Refractor: parámetros innecesarios">
+      <created>1655119473781</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119473781</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Refractor: renombrado de variables en InfoObject">
+      <created>1655119490922</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119490922</updated>
+    </task>
+    <task id="LOCAL-00033" summary="feat: nuevo stream para enviar archivos (DataOutputStream)&#10;refrator: renombrado y eliminación de variables">
+      <created>1655119542522</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119542522</updated>
+    </task>
+    <task id="LOCAL-00034" summary="refractor: eliminación de variables innecesarias">
+      <created>1655119574896</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119574896</updated>
+    </task>
+    <task id="LOCAL-00035" summary="feat: nuevo menu para el TreeGUi (UPLOAD)">
+      <created>1655119602483</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119602483</updated>
+    </task>
+    <task id="LOCAL-00036" summary="feat: comprobar que los elementos seleccionados son carpetas para mostrar la opción de UPLOAD">
+      <created>1655119633489</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119633489</updated>
+    </task>
+    <task id="LOCAL-00037" summary="feat: creación de filechooser para elegir archivo y crear nuevo hilo de socket">
+      <created>1655119671054</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119671054</updated>
+    </task>
+    <task id="LOCAL-00038" summary="refractor: eliminación">
+      <created>1655119688875</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119688875</updated>
+    </task>
+    <task id="LOCAL-00039" summary="refractor: especificar título y tipo de selección">
+      <created>1655119716034</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119716034</updated>
+    </task>
+    <task id="LOCAL-00040" summary="feat: clase para envío de objeto y archivo">
+      <created>1655119752158</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119752158</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ignore">
+      <created>1655119761921</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119761921</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -404,17 +468,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Workspace" />
-    <MESSAGE value="ENUM creado para acciones" />
-    <MESSAGE value="Refractor y añadido a ThreadPool (Executor)" />
-    <MESSAGE value=".idea modulo" />
-    <MESSAGE value="Nueva funcionalidad de lectura de directorios, copiado y cortado" />
-    <MESSAGE value="librerias añadidas" />
-    <MESSAGE value="liberia IO añadida" />
-    <MESSAGE value="Refractor de nombre de clase Main" />
-    <MESSAGE value="Clase eliminada" />
-    <MESSAGE value="Copiado de archivos, envío de socket a cliente" />
-    <MESSAGE value="Refractor de localización" />
     <MESSAGE value="Creación de menu para copiar archivos a directorio" />
     <MESSAGE value="Refractor nombre de arbol de directorios" />
     <MESSAGE value="Creación de menu de discos e inicialización de subdialog" />
@@ -429,7 +482,18 @@
     <MESSAGE value="Nueva clase de escucha de directorio JTreeDirectory" />
     <MESSAGE value="Fix: arreglo de bug de selección de directorio y tarea en hilo" />
     <MESSAGE value="refractor: reformateo" />
-    <option name="LAST_COMMIT_MESSAGE" value="refractor: reformateo" />
+    <MESSAGE value="Refractor: parámetros innecesarios" />
+    <MESSAGE value="Refractor: renombrado de variables en InfoObject" />
+    <MESSAGE value="feat: nuevo stream para enviar archivos (DataOutputStream)&#10;refrator: renombrado y eliminación de variables" />
+    <MESSAGE value="refractor: eliminación de variables innecesarias" />
+    <MESSAGE value="feat: nuevo menu para el TreeGUi (UPLOAD)" />
+    <MESSAGE value="feat: comprobar que los elementos seleccionados son carpetas para mostrar la opción de UPLOAD" />
+    <MESSAGE value="feat: creación de filechooser para elegir archivo y crear nuevo hilo de socket" />
+    <MESSAGE value="refractor: eliminación" />
+    <MESSAGE value="refractor: especificar título y tipo de selección" />
+    <MESSAGE value="feat: clase para envío de objeto y archivo" />
+    <MESSAGE value="ignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="ignore" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
