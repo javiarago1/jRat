@@ -1,13 +1,11 @@
 package Server.Connections;
 
 
+
 import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
 
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -17,8 +15,7 @@ public class Streams {
     private final ObjectOutputStream output;
     private final ObjectInputStream input;
     private final DataInputStream dataInput;
-
-    private boolean isWorking;
+    private final DataOutputStream dataOutput;
 
     private SystemInformation tempSystemInformation;
     private SystemNetworkInformation tempSystemNetworkInformation;
@@ -29,12 +26,26 @@ public class Streams {
         if (socket == null) throw new IllegalArgumentException();
         output = new ObjectOutputStream(socket.getOutputStream());
         input = new ObjectInputStream(socket.getInputStream());
-        dataInput= new DataInputStream(socket.getInputStream());
+        dataInput = new DataInputStream(socket.getInputStream());
+        dataOutput = new DataOutputStream(socket.getOutputStream());
 
     }
 
-    public byte[] readFile(){
-        int length=0;
+    public void sendFile(File file) {
+        try {
+            FileInputStream fileInputStream = new FileInputStream(file);
+            byte[] fileContentBytes = new byte[(int) file.length()];
+            int length = fileInputStream.read(fileContentBytes);
+            fileInputStream.close();
+            dataOutput.writeInt(length);
+            dataOutput.write(fileContentBytes);
+        } catch (IOException error) {
+            error.printStackTrace();
+        }
+    }
+
+    public byte[] readFile() {
+        int length = 0;
         try {
             length = dataInput.readInt();
         } catch (IOException e) {
@@ -100,11 +111,4 @@ public class Streams {
         this.tempSystemNetworkInformation = tempSystemNetworkInformation;
     }
 
-    public boolean isWorking() {
-        return isWorking;
-    }
-
-    public void setWorking(boolean working) {
-        isWorking = working;
-    }
 }
