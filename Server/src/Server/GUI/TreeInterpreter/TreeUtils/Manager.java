@@ -12,14 +12,14 @@ public abstract class Manager implements Runnable {
     private List<File> directories;
     private File directory;
 
-    public Manager(List<File> filesToCopy, List<File> directories, Streams stream) {
-        this.filesArray = new ArrayList<>(filesToCopy);
+    public Manager(List<File> filesArray, List<File> directories, Streams stream) {
+        this.filesArray = new ArrayList<>(filesArray);
         this.directories = new ArrayList<>(directories);
         this.stream = stream;
     }
 
-    public Manager(List<File> filesToCopy, File directory, Streams stream) {
-        this.filesArray = new ArrayList<>(filesToCopy);
+    public Manager(List<File> filesArray, File directory, Streams stream) {
+        this.filesArray = new ArrayList<>(filesArray);
         this.directory = directory;
         this.stream = stream;
     }
