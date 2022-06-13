@@ -9,13 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="Refractor">
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="refractor: reformateo">
+      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/FileManager/UploadFiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/Chooser/UploadFileAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/Chooser/UploadFolderAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Upload.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/Connections/Streams.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/Connections/Streams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TableUtils/Configuration/TableMenuListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/Menus/UploadAction.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeGUI/TreeListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Folder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/TreeInterpreter/TreeUtils/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/Server/GUI/jRatGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/Server/GUI/jRatGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +80,7 @@
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client (1)">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Client (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client.Client" />
       <module name="Client" />
@@ -155,8 +161,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client (1)" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Client (1)" />
         <item itemvalue="Application.testing" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Client" />
@@ -340,7 +346,49 @@
       <option name="project" value="LOCAL" />
       <updated>1654958154979</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Cambiado mensaje de Tree [] a &lt;&gt;">
+      <created>1654960912874</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1654960912874</updated>
+    </task>
+    <task id="LOCAL-00026" summary="New feature: Upload client side">
+      <created>1655119056910</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119056910</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Nueva clase de escucha de directorio JTreeDirectory">
+      <created>1655119102226</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119102226</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Nueva clase de escucha de directorio JTreeDirectory">
+      <created>1655119111542</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119111542</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Fix: arreglo de bug de selección de directorio y tarea en hilo">
+      <created>1655119228039</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119228039</updated>
+    </task>
+    <task id="LOCAL-00030" summary="refractor: reformateo">
+      <created>1655119251896</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1655119251896</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -376,7 +424,12 @@
     <MESSAGE value="Nueva forma de lectura de árbol" />
     <MESSAGE value="Cambios en orden de JTree" />
     <MESSAGE value="Refractor" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refractor" />
+    <MESSAGE value="Cambiado mensaje de Tree [] a &lt;&gt;" />
+    <MESSAGE value="New feature: Upload client side" />
+    <MESSAGE value="Nueva clase de escucha de directorio JTreeDirectory" />
+    <MESSAGE value="Fix: arreglo de bug de selección de directorio y tarea en hilo" />
+    <MESSAGE value="refractor: reformateo" />
+    <option name="LAST_COMMIT_MESSAGE" value="refractor: reformateo" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
