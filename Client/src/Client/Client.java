@@ -8,10 +8,12 @@ import Client.Tree.Tree;
 import net.lingala.zip4j.ZipFile;
 import org.apache.commons.io.FileUtils;
 
+import java.awt.*;
 import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
+import java.nio.file.AccessDeniedException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,6 +131,28 @@ public class Client {
                                 }
                                 System.out.println("Archivos movidos");
                             }
+                            case "RUN" -> {
+                                List<File> filesArray = e.getFilesArray();
+                                try {
+                                    if (Desktop.isDesktopSupported()) {
+                                        Desktop desktop = Desktop.getDesktop();
+                                        for (File a : filesArray) {
+                                            if (a.exists()) desktop.open(a);
+                                        }
+                                    }
+                                } catch (Exception er) {
+                                    er.printStackTrace();
+                                }
+                            }
+                            case "DELETE" -> {
+                                for (File a : e.getFilesArray()) {
+                                    if (a.isDirectory()) {
+                                        FileUtils.deleteDirectory(a);
+                                    } else {
+                                        FileUtils.delete(a);
+                                    }
+                                }
+                            }
                         }
                     }
 
@@ -138,6 +162,8 @@ public class Client {
                 System.out.println("Connection refused");
             } catch (SocketException ignored) {
                 System.out.println("Connection reset");
+            } catch (AccessDeniedException ex) {
+                System.out.println("Acceso denegado");
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }

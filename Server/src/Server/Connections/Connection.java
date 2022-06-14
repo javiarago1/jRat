@@ -46,6 +46,7 @@
              }
              executor.submit(new Connection(server, executor, dialog));
          } catch (Exception e) {
+             System.out.println("Exception on client");
              executor.submit(new Connection(server, executor, dialog));
          }
      }

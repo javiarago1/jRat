@@ -2,11 +2,9 @@ package Server.GUI.TreeInterpreter.TreeGUI;
 
 import Server.Connections.Streams;
 import Server.GUI.TreeInterpreter.DirectoryTreeGUI.DirectoryFolderRequest;
+import Server.GUI.TreeInterpreter.TreeGUI.Menus.*;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.Chooser.UploadFileAction;
 import Server.GUI.TreeInterpreter.TreeGUI.Menus.Chooser.UploadFolderAction;
-import Server.GUI.TreeInterpreter.TreeGUI.Menus.CopyMenu;
-import Server.GUI.TreeInterpreter.TreeGUI.Menus.DownloadAction;
-import Server.GUI.TreeInterpreter.TreeGUI.Menus.MoveMenu;
 import Server.GUI.TreeInterpreter.TreeUtils.Action;
 import com.formdev.flatlaf.FlatDarculaLaf;
 
@@ -94,22 +92,26 @@ public class TreeGUI {
         JMenuItem uploadFileItem = new JMenuItem("File");
         uploadMenu.add(uploadFileItem);
         uploadMenu.add(uploadFolderItem);
+        JMenuItem runItem = new JMenuItem("Run");
+        JMenuItem deleteItem = new JMenuItem("Delete");
 
         popupMenu.add(downloadItem);
         popupMenu.add(copyMenu);
         popupMenu.add(moveMenu);
         popupMenu.add(uploadMenu);
+        popupMenu.add(deleteItem);
+        popupMenu.add(runItem);
+
 
         downloadItem.addActionListener(new DownloadAction(tree, stream));
         copyMenu.addMenuListener(new CopyMenu(tree, stream, dialog, copyMenu));
         moveMenu.addMenuListener(new MoveMenu(tree, stream, dialog, moveMenu));
-
         uploadFileItem.addActionListener(new UploadFileAction(tree, stream, dialog));
         uploadFolderItem.addActionListener(new UploadFolderAction(tree, stream, dialog));
+        runItem.addActionListener(new RunAction(tree, stream));
+        deleteItem.addActionListener(new DeleteAction(tree, stream));
 
         tree.addMouseListener(new TreeListener(tree, popupMenu));
-
-
     }
 
     private void createMenuBar() {
