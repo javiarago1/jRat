@@ -9,14 +9,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="feat: run archivo y delete archivo">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/net_java_dev_jna_platform.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/xerial_sqlite_jdbc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Client/src/Client/InformationGathering/Chrome/DumpChromePasswords.java" afterDir="false" />
+    <list default="true" id="3c0bef37-d513-42af-805b-c819576d9a58" name="Changes" comment="feat: dump chrome passwords">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Server/src/testing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/Client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Client/Client.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Client/src/Client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/Client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/InformationGathering/Chrome/DumpChromePasswords.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/InfoObject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/ReadJSON.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/SystemInformation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/InformationGathering/System/SystemNetworkInformation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/DirectoryTree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/Client/Tree/Tree.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/Server.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Server/Server.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jRat.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jRat.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +41,7 @@
         <option value="Enum" />
         <option value="UML Class" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -43,25 +56,16 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2AIAeL6o3JnVkslciuwihAU76c2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultPlantUmlFileTemplate" value="UML Class" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Server/src" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MavenTry" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -72,6 +76,7 @@
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Client\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Client\src" />
       <recent name="C:\Users\JAVIER\IdeaProjects\jRat\Server" />
     </key>
   </component>
@@ -145,9 +150,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Client (1)" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.testing (1)" />
         <item itemvalue="Application.try2" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.testing" />
       </list>
     </recent_temporary>
@@ -160,6 +165,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654686819609</updated>
+      <workItem from="1655284171272" duration="5173000" />
     </task>
     <task id="LOCAL-00001" summary="Workspace">
       <created>1654687417450</created>
@@ -462,8 +468,18 @@
       <option name="project" value="LOCAL" />
       <updated>1655202907452</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="feat: dump chrome passwords">
+      <created>1655226599606</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1655226599606</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -478,7 +494,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refractor nombre de arbol de directorios" />
     <MESSAGE value="Creación de menu de discos e inicialización de subdialog" />
     <MESSAGE value="Creación de dialog para gestión de archivos" />
     <MESSAGE value="Refractor y añadido método para cerrar dialog" />
@@ -503,7 +518,8 @@
     <MESSAGE value="feat: clase para envío de objeto y archivo" />
     <MESSAGE value="ignore" />
     <MESSAGE value="feat: run archivo y delete archivo" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: run archivo y delete archivo" />
+    <MESSAGE value="feat: dump chrome passwords" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: dump chrome passwords" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
